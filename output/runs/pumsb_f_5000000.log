@@ -1,0 +1,9 @@
+=== KHONG PHAI KET QUA THAT - FILE CHAN CO Y ===
+Dat ngay 19/10/2026 de tools/chay_pumsb.ps1 (ban dang chay, PID 17880) BO QUA muc
+minUtil 5000000 va thoat sau khi xong muc 5.400.000.
+Ly do: ngoai suy cho thay muc nay can ~34 h (5.200.000) va ~85 h (5.000.000) CPU.
+Nhom quyet dinh dung lai sau 5.400.000 vi ba diem do da du chung minh ti le lech
+tang dan, va danh CPU cho thi nghiem phan ra thanh phan E8/E9/C3/C10.
+Co che: script bo qua muc nao co log chua chuoi "itemsets count".
+Neu muon chay that muc nay thi XOA file nay roi chay lai script.
+Periodic High-utility itemsets count : KHONG CHAY - BO QUA CO Y

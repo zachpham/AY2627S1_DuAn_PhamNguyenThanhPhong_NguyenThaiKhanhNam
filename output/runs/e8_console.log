@@ -1,0 +1,207 @@
+bo qua khoi pumsb theo tham so -bo_qua_pumsb
+
+E8 - doi thu tu chien luoc tia
+so lan chay: 93
+
+e8_a_mushroom_100000_ma2000_r1 : bat dau 11:13:55 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 10 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma2000_r1 : bat dau 11:14:05 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 9.1 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma2000_r1 : bat dau 11:14:14 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 10 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma2000_r2 : bat dau 11:14:24 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 9.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma2000_r2 : bat dau 11:14:33 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 11.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma2000_r2 : bat dau 11:14:44 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 14 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma2000_r3 : bat dau 11:14:57 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 13 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma2000_r3 : bat dau 11:15:10 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 13.2 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma2000_r3 : bat dau 11:15:23 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 12.7 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma2000_r4 : bat dau 11:15:37 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 14.9 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma2000_r4 : bat dau 11:15:51 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 13.4 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma2000_r4 : bat dau 11:16:04 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 13.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma2000_r5 : bat dau 11:16:17 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 13.1 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma2000_r5 : bat dau 11:16:30 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 12.9 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma2000_r5 : bat dau 11:16:42 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 14 s CPU, bat bien OK, mau khong_co_chuan
+
+e8_a_mushroom_100000_ma100_r1 : bat dau 11:16:56 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 13 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma100_r1 : bat dau 11:17:08 20/10
+  26324 mau, 149634 ung vien, EUCP loai 771, ESCP loai 75, 13.2 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma100_r1 : bat dau 11:17:21 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 12.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma100_r2 : bat dau 11:17:33 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 13 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma100_r2 : bat dau 11:17:46 20/10
+  26324 mau, 149634 ung vien, EUCP loai 771, ESCP loai 75, 12.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma100_r2 : bat dau 11:17:58 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 12.4 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma100_r3 : bat dau 11:18:10 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 12 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma100_r3 : bat dau 11:18:22 20/10
+  26324 mau, 149634 ung vien, EUCP loai 771, ESCP loai 75, 12.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma100_r3 : bat dau 11:18:34 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 14 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma100_r4 : bat dau 11:18:48 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 14 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma100_r4 : bat dau 11:19:02 20/10
+  26324 mau, 149634 ung vien, EUCP loai 771, ESCP loai 75, 14.6 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma100_r4 : bat dau 11:19:17 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 13.9 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma100_r5 : bat dau 11:19:31 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 14.4 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma100_r5 : bat dau 11:19:45 20/10
+  26324 mau, 149634 ung vien, EUCP loai 771, ESCP loai 75, 13.1 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma100_r5 : bat dau 11:19:58 20/10
+  26324 mau, 149634 ung vien, EUCP loai 846, ESCP loai 0, 12.8 s CPU, bat bien OK, mau khong_co_chuan
+
+e8_a_mushroom_100000_ma20_r1 : bat dau 11:20:11 20/10
+  26324 mau, 149625 ung vien, EUCP loai 846, ESCP loai 6, 14.1 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma20_r1 : bat dau 11:20:25 20/10
+  26324 mau, 149625 ung vien, EUCP loai 360, ESCP loai 492, 14.1 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma20_r1 : bat dau 11:20:39 20/10
+  26324 mau, 149625 ung vien, EUCP loai 846, ESCP loai 6, 14 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma20_r2 : bat dau 11:20:52 20/10
+  26324 mau, 149625 ung vien, EUCP loai 846, ESCP loai 6, 13 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma20_r2 : bat dau 11:21:06 20/10
+  26324 mau, 149625 ung vien, EUCP loai 360, ESCP loai 492, 13.4 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma20_r2 : bat dau 11:21:19 20/10
+  26324 mau, 149625 ung vien, EUCP loai 846, ESCP loai 6, 13.8 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma20_r3 : bat dau 11:21:32 20/10
+  26324 mau, 149625 ung vien, EUCP loai 846, ESCP loai 6, 14 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma20_r3 : bat dau 11:21:46 20/10
+  26324 mau, 149625 ung vien, EUCP loai 360, ESCP loai 492, 13.7 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma20_r3 : bat dau 11:22:00 20/10
+  26324 mau, 149625 ung vien, EUCP loai 846, ESCP loai 6, 14.9 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma20_r4 : bat dau 11:22:14 20/10
+  26324 mau, 149625 ung vien, EUCP loai 846, ESCP loai 6, 12.7 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma20_r4 : bat dau 11:22:26 20/10
+  26324 mau, 149625 ung vien, EUCP loai 360, ESCP loai 492, 13.1 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma20_r4 : bat dau 11:22:40 20/10
+  26324 mau, 149625 ung vien, EUCP loai 846, ESCP loai 6, 12.7 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma20_r5 : bat dau 11:22:52 20/10
+  26324 mau, 149625 ung vien, EUCP loai 846, ESCP loai 6, 12.7 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma20_r5 : bat dau 11:23:04 20/10
+  26324 mau, 149625 ung vien, EUCP loai 360, ESCP loai 492, 12.1 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma20_r5 : bat dau 11:23:16 20/10
+  26324 mau, 149625 ung vien, EUCP loai 846, ESCP loai 6, 14.1 s CPU, bat bien OK, mau khong_co_chuan
+
+e8_a_mushroom_100000_ma10_r1 : bat dau 11:23:30 20/10
+  23078 mau, 77952 ung vien, EUCP loai 336, ESCP loai 259, 10.3 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma10_r1 : bat dau 11:23:39 20/10
+  23078 mau, 77952 ung vien, EUCP loai 115, ESCP loai 480, 10.6 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma10_r1 : bat dau 11:23:50 20/10
+  23078 mau, 77952 ung vien, EUCP loai 336, ESCP loai 259, 11.3 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma10_r2 : bat dau 11:24:00 20/10
+  23078 mau, 77952 ung vien, EUCP loai 336, ESCP loai 259, 10.6 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma10_r2 : bat dau 11:24:11 20/10
+  23078 mau, 77952 ung vien, EUCP loai 115, ESCP loai 480, 10.8 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma10_r2 : bat dau 11:24:22 20/10
+  23078 mau, 77952 ung vien, EUCP loai 336, ESCP loai 259, 10.6 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma10_r3 : bat dau 11:24:31 20/10
+  23078 mau, 77952 ung vien, EUCP loai 336, ESCP loai 259, 10.2 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma10_r3 : bat dau 11:24:42 20/10
+  23078 mau, 77952 ung vien, EUCP loai 115, ESCP loai 480, 10.4 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma10_r3 : bat dau 11:24:52 20/10
+  23078 mau, 77952 ung vien, EUCP loai 336, ESCP loai 259, 9.7 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma10_r4 : bat dau 11:25:01 20/10
+  23078 mau, 77952 ung vien, EUCP loai 336, ESCP loai 259, 10.1 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma10_r4 : bat dau 11:25:11 20/10
+  23078 mau, 77952 ung vien, EUCP loai 115, ESCP loai 480, 10.4 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma10_r4 : bat dau 11:25:21 20/10
+  23078 mau, 77952 ung vien, EUCP loai 336, ESCP loai 259, 10.1 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma10_r5 : bat dau 11:25:31 20/10
+  23078 mau, 77952 ung vien, EUCP loai 336, ESCP loai 259, 10.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma10_r5 : bat dau 11:25:41 20/10
+  23078 mau, 77952 ung vien, EUCP loai 115, ESCP loai 480, 10.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma10_r5 : bat dau 11:25:51 20/10
+  23078 mau, 77952 ung vien, EUCP loai 336, ESCP loai 259, 9.8 s CPU, bat bien OK, mau khong_co_chuan
+
+e8_a_mushroom_100000_ma5_r1 : bat dau 11:26:00 20/10
+  3995 mau, 12167 ung vien, EUCP loai 92, ESCP loai 362, 3.6 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma5_r1 : bat dau 11:26:04 20/10
+  3995 mau, 12167 ung vien, EUCP loai 28, ESCP loai 426, 3.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma5_r1 : bat dau 11:26:07 20/10
+  3995 mau, 12167 ung vien, EUCP loai 92, ESCP loai 362, 4.3 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma5_r2 : bat dau 11:26:10 20/10
+  3995 mau, 12167 ung vien, EUCP loai 92, ESCP loai 362, 3.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma5_r2 : bat dau 11:26:13 20/10
+  3995 mau, 12167 ung vien, EUCP loai 28, ESCP loai 426, 3.8 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma5_r2 : bat dau 11:26:16 20/10
+  3995 mau, 12167 ung vien, EUCP loai 92, ESCP loai 362, 3.4 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma5_r3 : bat dau 11:26:19 20/10
+  3995 mau, 12167 ung vien, EUCP loai 92, ESCP loai 362, 3.5 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma5_r3 : bat dau 11:26:22 20/10
+  3995 mau, 12167 ung vien, EUCP loai 28, ESCP loai 426, 3.6 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma5_r3 : bat dau 11:26:25 20/10
+  3995 mau, 12167 ung vien, EUCP loai 92, ESCP loai 362, 3.4 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma5_r4 : bat dau 11:26:28 20/10
+  3995 mau, 12167 ung vien, EUCP loai 92, ESCP loai 362, 3.7 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma5_r4 : bat dau 11:26:31 20/10
+  3995 mau, 12167 ung vien, EUCP loai 28, ESCP loai 426, 3.7 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma5_r4 : bat dau 11:26:34 20/10
+  3995 mau, 12167 ung vien, EUCP loai 92, ESCP loai 362, 3.7 s CPU, bat bien OK, mau khong_co_chuan
+e8_a_mushroom_100000_ma5_r5 : bat dau 11:26:37 20/10
+  3995 mau, 12167 ung vien, EUCP loai 92, ESCP loai 362, 3.9 s CPU, bat bien OK, mau khong_co_chuan
+e8_b_mushroom_100000_ma5_r5 : bat dau 11:26:40 20/10
+  3995 mau, 12167 ung vien, EUCP loai 28, ESCP loai 426, 3.6 s CPU, bat bien OK, mau khong_co_chuan
+e8_c_mushroom_100000_ma5_r5 : bat dau 11:26:43 20/10
+  3995 mau, 12167 ung vien, EUCP loai 92, ESCP loai 362, 3.7 s CPU, bat bien OK, mau khong_co_chuan
+
+e8_a_accidents_19000000_ma1000_r1 : bat dau 11:26:46 20/10
+  0 mau, 2394 ung vien, EUCP loai 36, ESCP loai 0, 84.5 s CPU, bat bien OK, mau khop
+e8_b_accidents_19000000_ma1000_r1 : bat dau 11:27:55 20/10
+  0 mau, 2394 ung vien, EUCP loai 36, ESCP loai 0, 84.1 s CPU, bat bien OK, mau khop
+e8_c_accidents_19000000_ma1000_r1 : bat dau 11:29:05 20/10
+  0 mau, 2394 ung vien, EUCP loai 36, ESCP loai 0, 81.6 s CPU, bat bien OK, mau khop
+e8_a_accidents_19000000_ma1000_r2 : bat dau 11:30:13 20/10
+  0 mau, 2394 ung vien, EUCP loai 36, ESCP loai 0, 81.7 s CPU, bat bien OK, mau khop
+e8_b_accidents_19000000_ma1000_r2 : bat dau 11:31:22 20/10
+  0 mau, 2394 ung vien, EUCP loai 36, ESCP loai 0, 82.3 s CPU, bat bien OK, mau khop
+e8_c_accidents_19000000_ma1000_r2 : bat dau 11:32:32 20/10
+  0 mau, 2394 ung vien, EUCP loai 36, ESCP loai 0, 79.4 s CPU, bat bien OK, mau khop
+e8_a_accidents_19000000_ma1000_r3 : bat dau 11:33:40 20/10
+  0 mau, 2394 ung vien, EUCP loai 36, ESCP loai 0, 79.6 s CPU, bat bien OK, mau khop
+e8_b_accidents_19000000_ma1000_r3 : bat dau 11:34:49 20/10
+  0 mau, 2394 ung vien, EUCP loai 36, ESCP loai 0, 79.4 s CPU, bat bien OK, mau khop
+e8_c_accidents_19000000_ma1000_r3 : bat dau 11:35:58 20/10
+  0 mau, 2394 ung vien, EUCP loai 36, ESCP loai 0, 78.9 s CPU, bat bien OK, mau khop
+
+e8_a_accidents_13000000_ma1000_r1 : bat dau 11:37:06 20/10
+  0 mau, 36025 ung vien, EUCP loai 757, ESCP loai 0, 918.7 s CPU, bat bien OK, mau khop
+e8_b_accidents_13000000_ma1000_r1 : bat dau 11:50:43 20/10
+  CANH BAO: troi 4257.7 giay, CPU chi 954.6 giay
+  -> may ngu giua lan chay, con so Time KHONG dung duoc
+  0 mau, 36025 ung vien, EUCP loai 751, ESCP loai 6, 954.6 s CPU, bat bien OK, mau khop
+e8_c_accidents_13000000_ma1000_r1 : bat dau 13:01:40 20/10
+  0 mau, 36025 ung vien, EUCP loai 757, ESCP loai 0, 970.7 s CPU, bat bien OK, mau khop
+e8_a_accidents_13000000_ma1000_r2 : bat dau 13:15:10 20/10
+  0 mau, 36025 ung vien, EUCP loai 757, ESCP loai 0, 1003.5 s CPU, bat bien OK, mau khop
+e8_b_accidents_13000000_ma1000_r2 : bat dau 13:29:00 20/10
+  0 mau, 36025 ung vien, EUCP loai 751, ESCP loai 6, 938 s CPU, bat bien OK, mau khop
+e8_c_accidents_13000000_ma1000_r2 : bat dau 13:42:25 20/10
+  CANH BAO: troi 1579.5 giay, CPU chi 871 giay
+  -> may ngu giua lan chay, con so Time KHONG dung duoc
+  0 mau, 36025 ung vien, EUCP loai 757, ESCP loai 0, 871 s CPU, bat bien OK, mau khop
+e8_a_accidents_13000000_ma1000_r3 : bat dau 14:08:45 20/10
+  CANH BAO: troi 1548.4 giay, CPU chi 867.2 giay
+  -> may ngu giua lan chay, con so Time KHONG dung duoc
+  0 mau, 36025 ung vien, EUCP loai 757, ESCP loai 0, 867.2 s CPU, bat bien OK, mau khop
+e8_b_accidents_13000000_ma1000_r3 : bat dau 14:34:33 20/10
+  CANH BAO: troi 17157.9 giay, CPU chi 1102.3 giay
+  -> may ngu giua lan chay, con so Time KHONG dung duoc
+  0 mau, 36025 ung vien, EUCP loai 751, ESCP loai 6, 1102.3 s CPU, bat bien OK, mau khop
+e8_c_accidents_13000000_ma1000_r3 : bat dau 19:20:31 20/10
+  0 mau, 36025 ung vien, EUCP loai 757, ESCP loai 0, 1091.3 s CPU, bat bien OK, mau khop
+
+Xong het E8. Ket qua o output\e8_do_luong.csv

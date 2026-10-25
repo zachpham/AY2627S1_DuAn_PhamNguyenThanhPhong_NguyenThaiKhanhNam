@@ -1,0 +1,15 @@
+>/D:/D? án CNTT/tools/spmf/spmf.jar
+=============  PHMN v2.38-E8-C EUCP: true - ESCP: true =====
+ Database size: 8124 transactions
+ Time : 2038.0 ms
+ Memory ~ 301.0811767578125 MB
+ Periodic High-utility itemsets count : 3995
+ Candidate count : 12167
+ Pairs considered : 12621
+ Rejected by EUCP : 92
+ Rejected by ESCP : 362
+ Construct returned null : 701
+   of which LA-prune utility : 0
+   of which LA-prune support : 432
+ Invariant pairs == rejEUCP+rejESCP+candidates : OK
+===================================================

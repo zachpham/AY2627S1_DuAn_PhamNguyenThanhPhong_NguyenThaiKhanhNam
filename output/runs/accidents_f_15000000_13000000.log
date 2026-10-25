@@ -1,0 +1,12 @@
+=== minUtil 15000000 ===
+Time : 183431.0
+Memory ~ 1369.2377853393555
+itemsets count : 0
+Candidate count : 14323
+=== minUtil 13000000 ===
+Time : 402182.0
+Memory ~ 1541.8697662353516
+itemsets count : 0
+Candidate count : 36025
+
+[exited with code 0]

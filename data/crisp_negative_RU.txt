@@ -1,0 +1,10 @@
+@FILETYPE="Transaction database with utility values"
+@SOURCE="Vi du toi thieu cho thay loi cong huu ich am vao RU trong code SPMF. Mat hang 1: loi nhuan +10/don vi; mat hang 2: -1; mat hang 3: +1. U({1}) = 40."
+1 2:10:10 -1
+3:1:1
+1 2:10:10 -1
+3:1:1
+1 2:10:10 -1
+3:1:1
+1 2:10:10 -1
+3:1:1

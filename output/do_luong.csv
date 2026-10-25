@@ -1,0 +1,12 @@
+dataset,ban,minUtil,minPer,maxPer,minAvg,maxAvg,mau,ung_vien,thoi_gian_ms,bo_nho_mb,file_mau,file_log,ngay,ghi_chu,cpu_giay
+pumsb,cong_bo,5800000,1,3000,1,2000,0,0,6200,,,,2026-10-17,so thoi gian doc tu lan chay truoc khi bat dau ghi log,
+pumsb,da_sua,5800000,1,3000,1,2000,2,9812592,9146378,1402.46,output/pumsb_f_5800000.txt,output/runs/pumsb_f_5800000.log,2026-10-18,2 mau da kiem chung doc lap bang awk,
+accidents,cong_bo,19000000,1,2000,5,1000,0,0,4815,617.20,output/accidents_o_19000000.txt,,2026-10-18,chay foreground truoc khi bat dau ghi log,
+accidents,da_sua,19000000,1,2000,5,1000,0,2394,37347,1361.29,output/accidents_f_19000000.txt,output/runs/accidents_f_19000000.log,2026-10-18,,
+accidents,da_sua,18000000,1,2000,5,1000,0,3673,57056,1404.67,output/accidents_f_18000000.txt,,2026-10-18,chay foreground truoc khi bat dau ghi log,
+accidents,da_sua,17000000,1,2000,5,1000,0,5776,82244,1503.38,output/accidents_f_17000000.txt,,2026-10-18,chay foreground truoc khi bat dau ghi log,
+accidents,da_sua,15000000,1,2000,5,1000,0,14323,183431,1369.24,output/accidents_f_15000000.txt,output/runs/accidents_f_15000000_13000000.log,2026-10-18,,
+accidents,da_sua,13000000,1,2000,5,1000,0,36025,402182,1541.87,output/accidents_f_13000000.txt,output/runs/accidents_f_15000000_13000000.log,2026-10-18,,
+accidents,da_sua,19000000,1,2000,1,1000,35,2394,37462,1431.79,output/accidents_f_19000000_minavg1.txt,output/runs/accidents_f_19000000_minavg1.log,2026-10-18,thi nghiem tha minAvg: ung vien trung khit voi minAvg=5,
+pumsb,da_sua,5600000,1,3000,1,2000,11,24480235,47663829,1456.46,output/pumsb_f_5600000.txt,output/runs/pumsb_f_5600000.log,2026-10-19,troi 13.24 h NHUNG may ngu ~6.4 h giua lan chay; CPU that uoc ~6.8 h - KHONG dung con so Time nay,
+pumsb,da_sua,5400000,1,3000,1,2000,33,80446777,107330883,1764.2127227783203,output/pumsb_f_5400000.txt,output/runs/pumsb_f_5400000.log,2026-10-20,"troi 29.81 h NHUNG may ngu 5.11 h giua lan chay (3 lan, xem output/runs/cpu_watch.csv) - KHONG dung con so Time nay; tinh toan that ~24.7 h troi",93910.4

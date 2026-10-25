@@ -1,0 +1,8 @@
+# Store and deliver every file exactly as it is, with no line-ending conversion.
+#
+# This machine has core.autocrlf = true, which would make Git normalise CRLF to LF inside the
+# repository and convert it back on checkout. On Windows the round trip is invisible, but a clone
+# on Linux or macOS would receive different bytes, and the MD5 values recorded in
+# output/MANIFEST_output.csv would no longer match the files. The datasets and the pattern files
+# are experimental evidence, so byte equality matters more than tidy line endings.
+* -text

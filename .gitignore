@@ -1,0 +1,65 @@
+# What is deliberately kept out of the repository, and why.
+# See README.md section 7 for how to obtain the two large datasets.
+
+# Every dataset is committed, including pumsb_negative.txt (27 MB) and accidents_negative.txt
+# (71 MB), because the supervisor asked for the input data to be in the repository. Both are
+# under GitHub's 100 MB per-file limit, so Git LFS is not needed.
+
+# --- Published papers: redistributing the publisher PDF is not ours to do ---
+1-s2.0-S0020025521012457-main.pdf
+1-s2.0-S0952197623003664-main.pdf
+Mining periodic high-utility itemsets with both positive and negative utilities.pdf
+
+# --- Experiment results. The 140 pattern files total 166 MB but hold only 15 distinct
+#     contents: the repeated E8 runs write byte-identical output, which is precisely what E8
+#     measured, and the published build writes empty files. One representative of each distinct
+#     content is committed below; output/MANIFEST_output.csv names all 140 originals with their
+#     size, MD5 and representative, so nothing is lost. Regenerate both the manifest and this
+#     list with `py -I tools/manifest_output.py`. ---
+output/*.txt
+!output/ablation_E0.txt
+!output/accidents_f_13000000.txt
+!output/accidents_f_19000000_minavg1.txt
+!output/chess_f_150000.txt
+!output/chess_f_80000.txt
+!output/chess_lo_1.txt
+!output/chess_lo_100.txt
+!output/chess_lo_1000.txt
+!output/docExample_PHMN.txt
+!output/e8_a_mushroom_100000_ma100_r1.txt
+!output/e8_a_mushroom_100000_ma10_r1.txt
+!output/e8_a_mushroom_100000_ma5_r1.txt
+!output/e8_a_pumsb_5800000_ma2000_r1.txt
+!output/pumsb_f_5400000.txt
+!output/pumsb_f_5600000.txt
+output/*.bak
+output/ablation_tmp/
+output/domain_tmp/
+
+# --- Compiled output: rebuilt by the javac command in README section 3.1 ---
+build/
+*.class
+
+# --- Third-party SPMF material that is not needed to run or to read the patch.
+#     tools/spmf/spmf.jar and tools/spmf/source/ ARE kept. ---
+tools/spmf/test_files/
+tools/spmf/test_files.zip
+tools/spmf/spmf.zip
+tools/spmf/output_phmn.txt
+
+# --- Our own archive copies and scratch work ---
+PHMN_code_cho_Phong.zip
+*.truoc_khi_*
+*.header_cu.csv
+saved/
+scraps/
+a.ipynb
+report1.docx
+
+# --- Tooling noise ---
+__pycache__/
+*.pyc
+~$*.docx
+~$*.pptx
+Thumbs.db
+desktop.ini
