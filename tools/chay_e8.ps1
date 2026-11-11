@@ -14,6 +14,11 @@
 # Script cung doi chieu file mau sinh ra voi ket qua cua ban da sua, de chac
 # chan khong bien the nao lam thay doi dau ra.
 #
+# Moi lan chay goi client class src/ClientOrderPHMN.java (bien dich mot lan vao
+# build/clients o dau script), client goi server class AlgoPHMN cua bien the
+# dat truoc spmf.jar tren classpath, in ra thu muc ma lop do duoc nap tu do, va
+# tu kiem bat bien dem. Client chay thuat toan y het lenh "gui.Main run PHMN".
+#
 # Chay detached (xem ba cai bay trong architecture.md, duong dan co dau cach):
 #   $fso = New-Object -ComObject Scripting.FileSystemObject
 #   $short = $fso.GetFile("D:\Du an CNTT\tools\chay_e8.ps1").ShortPath
@@ -32,6 +37,25 @@ param(
 # step: lam viec tu goc du an, khong bao gio tu tools/, vi SPMF can duong dan tuong doi
 $root = Split-Path -Parent $PSScriptRoot
 Set-Location $root
+
+# step: bien dich client mot lan, de thoi gian bien dich khong bi tinh vao CPU do duoc
+& javac -nowarn -cp 'tools/spmf/spmf.jar' -d 'build/clients' 'src/ClientOrderPHMN.java'
+if ($LASTEXITCODE -ne 0)
+{
+    Write-Output 'Khong bien dich duoc src/ClientOrderPHMN.java, dung.'
+    exit 1
+}
+
+# step: script nay khong bien dich ba bien the; thieu thi dung ngay va chi lenh, vi neu khong JVM
+#       se nap AlgoPHMN trong spmf.jar
+foreach ($bt in @('e8_a', 'e8_b', 'e8_c'))
+{
+    if (-not (Test-Path "build/$bt/ca/pfv/spmf/algorithms/frequentpatterns/phmn_plus/AlgoPHMN.class"))
+    {
+        Write-Output "Thieu build/$bt. Chay truoc: py -I tools/sinh_e8.py, roi javac cho ca ba bien the (README muc 5)."
+        exit 1
+    }
+}
 
 $csv_path = 'output\e8_do_luong.csv'
 $header = 'bien_the,dataset,minUtil,minPer,maxPer,minAvg,maxAvg,nguong_support,lan,' +
@@ -142,8 +166,8 @@ foreach ($ch in $cau_hinh)
                 }
             }
 
-            $classpath = "build/$bt;tools/spmf/spmf.jar"
-            $java_args = "-Xmx6g -cp `"$classpath`" ca.pfv.spmf.gui.Main run PHMN " +
+            $classpath = "build/$bt;tools/spmf/spmf.jar;build/clients"
+            $java_args = "-Xmx6g -cp `"$classpath`" ClientOrderPHMN " +
                          "$($ch.f) $out_path $($ch.mu) " +
                          "$($ch.per[0]) $($ch.per[1]) $($ch.per[2]) $($ch.per[3])"
 

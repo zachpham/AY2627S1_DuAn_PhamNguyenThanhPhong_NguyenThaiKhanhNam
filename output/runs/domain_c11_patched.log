@@ -1,0 +1,25 @@
+Thiet ke: 20 giao dich, 8 mat hang, minUtil = 20% tong loi ich duong, trung binh tren 20 hat giong.
+
+## Bang 1: ti le mat hang am -> ty le bo sot mau
+(minPer=1, maxPer=|D|, minAvg=1, maxAvg=|D| nen rang buoc chu ky khong tia gi)
+
+| Mat hang am | Ti le | Mau dung (vet can) | PHMN tim duoc | Bo sot | Ty le bo sot | Ket qua thua |
+|---|---|---|---|---|---|---|
+| 0 / 8 | 0% | 5.2 | 5.2 | 0.0 | **0.0%** | 0 |
+| 1 / 8 | 12% | 6.6 | 6.6 | 0.0 | **0.0%** | 0 |
+| 2 / 8 | 25% | 7.3 | 7.3 | 0.0 | **0.0%** | 0 |
+| 3 / 8 | 38% | 7.7 | 7.7 | 0.0 | **0.0%** | 0 |
+| 4 / 8 | 50% | 7.6 | 7.6 | 0.0 | **0.0%** | 0 |
+| 6 / 8 | 75% | 4.8 | 4.8 | 0.0 | **0.0%** | 0 |
+
+## Bang 2: tham so maxAvg -> suc tia
+(co dinh 2 / 8 mat hang am; nguong support sinh ra la |D|/maxAvg - 1)
+
+| maxAvg | Nguong support | Mau dung | PHMN tim duoc | Ty le bo sot | So ung vien |
+|---|---|---|---|---|---|
+| 20 | 0.00 | 7.3 | 7.3 | 0.0% | 27.3 |
+| 10 | 1.00 | 7.3 | 7.3 | 0.0% | 27.3 |
+| 6 | 2.33 | 7.3 | 7.3 | 0.0% | 27.2 |
+| 4 | 4.00 | 6.7 | 6.7 | 0.0% | 24.2 |
+| 3 | 5.67 | 4.9 | 4.9 | 0.0% | 9.8 |
+| 2 | 9.00 | 2.1 | 2.1 | 0.0% | 0.6 |

@@ -56,6 +56,13 @@ public class ClientAblationPHMN
     private static final int EXPECTED_ARGUMENT_COUNT = 7;
 
     /**
+     * Not used: the client is run through {@link #main(String[])} and holds no state.
+     */
+    private ClientAblationPHMN()
+    {
+    }
+
+    /**
      * One ablation configuration, that is one row of the result table.
      */
     private static class Config
@@ -110,6 +117,13 @@ public class ClientAblationPHMN
         double memory_mb;
         /** The patterns themselves, used to check whether two configurations agree. */
         Set<String> patterns;
+
+        /**
+         * Creates an empty result, filled in by runConfiguration.
+         */
+        Result()
+        {
+        }
     }
 
     /**
@@ -238,6 +252,7 @@ public class ClientAblationPHMN
     {
         Set<String> patterns = new TreeSet<>();
 
+        // Step 1: read the file line by line, skipping blank lines and SPMF header lines
         for (String line : Files.readAllLines(Path.of(output_path), StandardCharsets.UTF_8))
         {
             String trimmed = line.trim();
@@ -246,6 +261,7 @@ public class ClientAblationPHMN
                 continue;
             }
 
+            // Step 2: split off the items and sort them.
             // A line looks like: 1 4 3 #UTIL: 48 #SUP: 3 #MINPER: 1 #MAXPER: 2 #AVGPER: 2.0
             String[] segments = trimmed.split("#");
             String[] item_text = segments[0].trim().split("\\s+");
@@ -256,6 +272,7 @@ public class ClientAblationPHMN
             }
             java.util.Arrays.sort(items);
 
+            // Step 3: build the key "items => utility" and keep it
             String utility = segments[1].substring(segments[1].indexOf(':') + 1).trim();
 
             StringBuilder key = new StringBuilder();
@@ -278,6 +295,7 @@ public class ClientAblationPHMN
      */
     private static void printHeader(String input_path, int[] thresholds)
     {
+        // Step 1: print the data file, the five thresholds and the repetition count
         System.out.println();
         System.out.println("## Ablation PHMN / PHMN+");
         System.out.println();
@@ -298,11 +316,14 @@ public class ClientAblationPHMN
      */
     private static void printTable(List<Config> configs, Map<String, Result> results)
     {
+        // Step 1: the baseline is the reference for both percentage columns
         Result baseline = results.get(BASELINE_ID);
 
+        // Step 2: print the table header
         System.out.println("| Code | Configuration | Patterns | Candidates | vs E0 | Time (ms) | vs E0 | Memory (MB) |");
         System.out.println("|---|---|---|---|---|---|---|---|");
 
+        // Step 3: print one row per configuration
         for (Config config : configs)
         {
             Result result = results.get(config.id);
@@ -328,10 +349,12 @@ public class ClientAblationPHMN
      */
     private static String formatRatio(double value, double baseline_value)
     {
+        // Step 1: a zero baseline has no meaningful percentage
         if (baseline_value == 0)
         {
             return "-";
         }
+        // Step 2: relative change, printed with its sign
         double change = (value - baseline_value) / baseline_value * 100d;
         return String.format("%+.0f%%", change);
     }
@@ -347,6 +370,7 @@ public class ClientAblationPHMN
      */
     private static void printAgreementCheck(List<Config> configs, Map<String, Result> results)
     {
+        // Step 1: print the heading; every configuration is compared with the baseline
         Result baseline = results.get(BASELINE_ID);
         System.out.println("### Do all configurations agree with " + BASELINE_ID + " ?");
         System.out.println();
@@ -358,12 +382,14 @@ public class ClientAblationPHMN
                 continue;
             }
 
+            // Step 2: patterns only in the baseline, and patterns only in this configuration
             Set<String> found = results.get(config.id).patterns;
             Set<String> missing = new TreeSet<>(baseline.patterns);
             missing.removeAll(found);
             Set<String> extra = new TreeSet<>(found);
             extra.removeAll(baseline.patterns);
 
+            // Step 3: report agreement, or the size of each difference with examples
             if (missing.isEmpty() && extra.isEmpty())
             {
                 System.out.println("- " + config.id + " : same patterns, so the strategy is a pure speed-up here");
@@ -388,10 +414,12 @@ public class ClientAblationPHMN
      */
     private static void printSample(String prefix, Set<String> patterns)
     {
+        // Step 1: nothing to show for an empty set
         if (patterns.isEmpty())
         {
             return;
         }
+        // Step 2: append at most three patterns, then an ellipsis if more remain
         StringBuilder line = new StringBuilder(prefix);
         int shown = 0;
         for (String pattern : patterns)
@@ -412,6 +440,7 @@ public class ClientAblationPHMN
      */
     private static void printUsage()
     {
+        // Step 1: print the command line form, an example and the path warning
         System.out.println("Ablation experiment for PHMN and PHMN+.");
         System.out.println();
         System.out.println("Usage, from the project root directory:");

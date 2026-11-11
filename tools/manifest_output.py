@@ -56,9 +56,12 @@ def main():
         kich_thuoc[ten] = os.path.getsize(duong_dan)
         theo_bam.setdefault(bam_file(duong_dan), []).append(ten)
 
-    # The representative of each group is the first name alphabetically, so the choice is
-    # reproducible and does not depend on the order the filesystem happened to list the folder.
-    dai_dien = {bam: nhom[0] for bam, nhom in theo_bam.items()}
+    # The representative of each group is a run of the patched build ("_f_") when the group has
+    # one, otherwise the first name alphabetically. The choice is reproducible, does not depend on
+    # the order the filesystem lists the folder, and keeps the names the README and
+    # tools/chay_e8.ps1 refer to even when a later item-order variant writes identical bytes.
+    dai_dien = {bam: min(nhom, key=lambda ten: ('_f_' not in ten, ten))
+                for bam, nhom in theo_bam.items()}
 
     with open(MANIFEST, 'w', newline='', encoding='utf-8') as f:
         ghi = csv.writer(f)

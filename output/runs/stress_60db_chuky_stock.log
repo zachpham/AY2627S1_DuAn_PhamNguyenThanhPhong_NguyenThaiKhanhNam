@@ -1,0 +1,56 @@
+Ban duoc kiem : NGUYEN TRANG
+Nguong chu ky : CHAT, ba bo moi co so du lieu
+seed  2  nguong=(2, 2, 3, 2, 7) bo sot 2 / 2 tap muc  vi du: [(1, 4), (1, 3, 4)]
+seed  6  nguong=(4, 1, 6, 2, 3) bo sot 3 / 9 tap muc  vi du: [(1,), (2, 3, 4), (1, 2, 3, 4)]
+seed  7  nguong=(46, 2, 10, 2, 10) bo sot 1 / 8 tap muc  vi du: [(1, 3, 5, 6)]
+seed  8  nguong=(1, 1, 3, 1, 3) bo sot 5 / 6 tap muc  vi du: [(1, 5), (3, 5), (4, 5)]
+seed  8  nguong=(14, 1, 6, 2, 3) bo sot 5 / 5 tap muc  vi du: [(2, 5), (1, 2, 5), (2, 3, 5)]
+seed  9  nguong=(5, 1, 3, 1, 3) bo sot 1 / 6 tap muc  vi du: [(1, 3)]
+seed  9  nguong=(5, 1, 2, 2, 3) bo sot 1 / 1 tap muc  vi du: [(1, 3)]
+seed  9  nguong=(10, 1, 6, 2, 6) bo sot 11 / 23 tap muc  vi du: [(1, 2), (1, 3), (1, 7)]
+seed 10  nguong=(27, 1, 4, 1, 2) bo sot 1 / 7 tap muc  vi du: [(2, 3, 4)]
+seed 15  nguong=(1, 1, 4, 2, 7) bo sot 3 / 3 tap muc  vi du: [(2, 3), (1, 2, 3), (2, 3, 5)]
+seed 15  nguong=(1, 1, 3, 1, 7) bo sot 3 / 4 tap muc  vi du: [(3,), (2, 5), (3, 5)]
+seed 16  nguong=(1, 1, 6, 1, 2) bo sot 3 / 34 tap muc  vi du: [(1, 5, 6), (2, 5, 6), (1, 2, 5, 6)]
+seed 16  nguong=(19, 1, 4, 1, 6) bo sot 9 / 13 tap muc  vi du: [(4, 6), (1, 2, 4), (1, 4, 6)]
+seed 24  nguong=(9, 2, 6, 1, 11) bo sot 29 / 29 tap muc  vi du: [(1,), (1, 2), (1, 3)]
+seed 24  nguong=(9, 2, 6, 1, 2) bo sot 6 / 6 tap muc  vi du: [(1,), (1, 3), (1, 4)]
+seed 27  nguong=(13, 1, 4, 1, 12) bo sot 6 / 7 tap muc  vi du: [(1, 2), (1, 3), (1, 4)]
+seed 27  nguong=(2, 1, 7, 2, 2) bo sot 1 / 1 tap muc  vi du: [(1, 3, 7)]
+seed 28  nguong=(4, 1, 6, 1, 2) bo sot 1 / 3 tap muc  vi du: [(1, 2)]
+seed 30  nguong=(66, 1, 8, 2, 8) bo sot 1 / 17 tap muc  vi du: [(1, 2, 3, 4, 5)]
+seed 31  nguong=(6, 2, 4, 1, 2) bo sot 1 / 1 tap muc  vi du: [(1,)]
+seed 31  nguong=(2, 1, 4, 1, 7) bo sot 1 / 11 tap muc  vi du: [(1, 2, 3)]
+seed 32  nguong=(28, 1, 11, 2, 11) bo sot 2 / 3 tap muc  vi du: [(1, 2, 3), (1, 2, 4)]
+seed 34  nguong=(41, 1, 9, 1, 3) bo sot 18 / 26 tap muc  vi du: [(1, 5), (3, 4), (4, 5)]
+seed 34  nguong=(20, 1, 4, 1, 3) bo sot 14 / 31 tap muc  vi du: [(1, 2, 3), (1, 2, 5), (1, 5, 6)]
+seed 35  nguong=(67, 1, 5, 1, 8) PHMN khac PHMN+: chi PHMN [(1, 2, 4, 5)], chi PHMN+ []
+seed 35  nguong=(67, 1, 5, 1, 8) bo sot 1 / 15 tap muc  vi du: [(1, 4, 5, 6)]
+seed 36  nguong=(41, 1, 4, 1, 8) bo sot 2 / 13 tap muc  vi du: [(6,), (2, 3, 6)]
+seed 38  nguong=(13, 1, 9, 1, 9) bo sot 26 / 46 tap muc  vi du: [(2, 4), (2, 7), (1, 2, 4)]
+seed 40  nguong=(7, 1, 4, 1, 3) bo sot 1 / 19 tap muc  vi du: [(2, 3, 4)]
+seed 41  nguong=(24, 1, 6, 2, 11) bo sot 1 / 52 tap muc  vi du: [(2, 3, 5, 6)]
+seed 42  nguong=(1, 1, 4, 1, 3) bo sot 2 / 3 tap muc  vi du: [(2, 4), (1, 2, 4)]
+seed 45  nguong=(1, 1, 3, 1, 6) bo sot 1 / 1 tap muc  vi du: [(1,)]
+seed 45  nguong=(1, 1, 6, 1, 2) bo sot 1 / 1 tap muc  vi du: [(1,)]
+seed 45  nguong=(1, 1, 6, 2, 3) bo sot 4 / 4 tap muc  vi du: [(1,), (2,), (1, 2)]
+seed 46  nguong=(3, 2, 7, 2, 12) bo sot 1 / 3 tap muc  vi du: [(2, 3, 4)]
+seed 46  nguong=(17, 1, 7, 1, 12) bo sot 1 / 8 tap muc  vi du: [(2, 3, 4)]
+seed 54  nguong=(6, 1, 2, 1, 2) bo sot 1 / 1 tap muc  vi du: [(4,)]
+seed 58  nguong=(10, 2, 4, 1, 7) bo sot 2 / 3 tap muc  vi du: [(1, 2, 3, 4), (1, 2, 3, 4, 5)]
+seed 58  nguong=(42, 1, 4, 1, 3) bo sot 7 / 10 tap muc  vi du: [(1, 2), (1, 2, 3), (2, 3, 4)]
+seed 60  nguong=(5, 2, 4, 2, 9) bo sot 3 / 3 tap muc  vi du: [(4, 6), (1, 4, 6), (3, 4, 6)]
+seed 60  nguong=(5, 1, 5, 1, 3) bo sot 8 / 9 tap muc  vi du: [(2,), (1, 6), (2, 5)]
+seed 60  nguong=(2, 1, 4, 2, 3) bo sot 3 / 3 tap muc  vi du: [(4, 6), (1, 4, 6), (3, 4, 6)]
+
+--- Tong ket ---
+So co so du lieu           : 60
+  trong do co muc am       : 56
+So bo bi bo sot ket qua    : 26
+Tong so tap muc dung       : 1106
+So tap muc bi bo sot       : 193
+So ket qua thua (sai)      : 0
+So tap muc sai gia tri     : 0   (huu ich, support, minPer, maxPer)
+So lan PHMN khac PHMN+     : 1
+So lan chay                : 180
+  nguong chu ky loai >= 1  : 164 lan, tong 3627 tap muc dat nguong huu ich

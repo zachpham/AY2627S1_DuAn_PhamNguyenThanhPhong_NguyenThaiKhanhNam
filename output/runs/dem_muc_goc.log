@@ -1,0 +1,16 @@
+== data/accidents_negative.txt 19000000 2000 1000
+transactions            : 340183
+items                   : 468
+TWU >= minUtil          : 49
+support threshold       : 339.18
+enter the root list     : 47
+removed by maxPer       : 2
+removed by maxAvg       : 0
+== data/pumsb_negative.txt 5800000 3000 2000
+transactions            : 49046
+items                   : 2113
+TWU >= minUtil          : 114
+support threshold       : 23.52
+enter the root list     : 114
+removed by maxPer       : 0
+removed by maxAvg       : 0

@@ -22,17 +22,24 @@ import java.util.List;
 /**
  * This class represents a UtilityList as used by the HUI-Miner algorithm.
  *
- * @see AlgoHUIMiner
+ * @see AlgoPHMN
  * @see ElementPHMN
  * @author Philippe Fournier-Viger
  */
 public class UtilityListPHMN {
-	Integer item;  // the item
-	long sumIutils = 0;  // the sum of item utilities
-	long sumRutils = 0;  // the sum of remaining utilities
-	long sumPutils = 0;  // PATCHED: the sum of positive utilities, the PU of Definition 8
-	List<ElementPHMN> elements = new ArrayList<ElementPHMN>();  // the elements
+	/** the last item of the itemset this list represents */
+	Integer item;
+	/** the sum of the utilities of the itemset, U, negative utilities included */
+	long sumIutils = 0;
+	/** the sum of the remaining utilities, RU */
+	long sumRutils = 0;
+	/** PATCHED: the sum of the positive utilities, the PU of the corrected test PU + RU */
+	long sumPutils = 0;
+	/** one element per transaction that contains the itemset, in transaction order */
+	List<ElementPHMN> elements = new ArrayList<ElementPHMN>();
+	/** largest gap between occurrences, counting the gaps before the first and after the last */
 	int largestPeriodicity = 0;
+	/** smallest gap between two consecutive occurrences */
 	int smallestPeriodicity = Integer.MAX_VALUE;
 
 
@@ -54,6 +61,7 @@ public class UtilityListPHMN {
 	
 	/**
 	 * Method to add an element to this utility list and update the sums at the same time.
+	 * @param element the element of one more transaction that contains the itemset
 	 */
 	public void addElement(ElementPHMN element){
 		sumIutils += element.iutils;

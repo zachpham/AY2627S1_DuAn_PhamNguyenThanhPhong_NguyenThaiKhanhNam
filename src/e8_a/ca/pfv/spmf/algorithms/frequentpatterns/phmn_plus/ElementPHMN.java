@@ -18,9 +18,9 @@ package ca.pfv.spmf.algorithms.frequentpatterns.phmn_plus;
 
 /**
  * This class represents an Element of a utility list as used by the HUI-Miner algorithm.
- * 
- * @see AlgoHUIMiner
- * @see UtilityList
+ *
+ * @see AlgoPHMN
+ * @see UtilityListPHMN
  * @author Philippe Fournier-Viger
  */
 public class ElementPHMN {
@@ -32,13 +32,17 @@ public class ElementPHMN {
 	/** remaining utility */
 	public int rutils; 
 	/** PATCHED: positive utility of the itemset in this transaction, the pu field of the
-	 * PNU-list of Definition 9. It is needed because Definition 8 bounds a subtree with
-	 * PU + RU, not with U + RU: a negative U counts transactions where the extension does
-	 * not occur, which can push the bound below the real utility of that extension. */
+	 * PNU-list of Definition 9. The corrected pruning test PU + RU needs it. Strategy 4 of F0
+	 * tests U + RU instead, but a negative U counts transactions where an extension does not
+	 * occur, which can push that value below the real utility of the extension. */
 	public final int putils; 
 	
 	/**
-	 * Constructor.
+	 * Constructor, kept for the code paths of the published version.
+	 * PATCHED: it sets putils to max(0, iutils), which is correct only for a single item. For an
+	 * itemset the positive part of a signed sum is not the sum of the positive parts (with +5 and
+	 * -3 the right putils is 5, not 2), so every element of an itemset of two or more items must
+	 * be built with the four-argument constructor below.
 	 * @param tid  the transaction id
 	 * @param iutils  the itemset utility
 	 * @param rutils  the remaining utility

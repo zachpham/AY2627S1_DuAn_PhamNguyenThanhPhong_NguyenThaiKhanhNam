@@ -1,0 +1,16 @@
+dataset        minUtil  order                    patterns   candidates    x TWU      CPU s       MB  same set as TWU
+accidents     13000000  TWU only (SPMF)                 0       36,025     1.00      677.4     1514  yes
+accidents     13000000  negative first (Def. 7)         0      321,734     8.93     3692.7     2548  yes  SLEPT: elapsed 6193 s
+accidents     13000000  positive first (FHN)            0       14,490     0.40      228.3     2168  yes
+accidents     19000000  TWU only (SPMF)                 0        2,394     1.00       66.5     1318  yes
+accidents     19000000  negative first (Def. 7)         0       61,183    25.56      995.5     2039  yes
+accidents     19000000  positive first (FHN)            0        1,078     0.45       36.9     1221  yes
+chess           150000  TWU only (SPMF)                13       20,086     1.00        2.6      301  yes
+chess           150000  negative first (Def. 7)        13   59,916,166  2982.98     3425.2      477  yes
+chess           150000  positive first (FHN)           13       10,608     0.53        2.1      299  yes
+mushroom        100000  TWU only (SPMF)             26324      149,634     1.00       10.8      310  yes
+mushroom        100000  negative first (Def. 7)     26324      272,361     1.82       18.9      310  yes
+mushroom        100000  positive first (FHN)        26324       90,282     0.60        7.6      301  yes
+pumsb          5800000  TWU only (SPMF)                 2    9,812,592     1.00    13998.6     1332  yes
+pumsb          5800000  negative first (Def. 7)   STOPPED AT DEADLINE 2026-11-10 06:45 : CPU 6916.2 s, wall 6705.8 s, not finished
+pumsb          5800000  positive first (FHN)            2       51,119     0.01       97.2      921  yes

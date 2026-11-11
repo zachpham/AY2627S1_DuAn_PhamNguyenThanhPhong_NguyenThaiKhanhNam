@@ -90,7 +90,7 @@ MO_VONG = """					for(int j=i+1; j < ULs.size(); j++){
 """
 
 # step: bien the C nhac hai tra cuu ra ngoai, nen can khai bao truoc vong lap
-HOIST = """					// E8-C: hai tra cuu duoi day khong phu thuoc j, nhac ra ngoai vong lap
+HOIST = """					// E8-C: the two lookups below do not depend on j, so they are done once, before the loop
 					Map<Integer, Long> mapTWUF_X = ENABLE_EUCP ? mapEUCS.get(X.item) : null;
 					Map<Integer, Long> mapSUPF_X = ENABLE_ESCP ? mapESCS.get(X.item) : null;
 """
@@ -114,12 +114,12 @@ LOC_ESCP_C = """						if(mapSUPF_X != null){
 """
 
 KHOI_MOI = {
-    'e8_a': MO_VONG + '\n\t\t\t\t\t\t// E8-A: thu tu goc - EUCP truoc, ESCP sau\n'
+    'e8_a': MO_VONG + '\n\t\t\t\t\t\t// E8-A: original order - EUCP first, then ESCP\n'
             + LOC_EUCP + LOC_ESCP,
-    'e8_b': MO_VONG + '\n\t\t\t\t\t\t// E8-B: dao thu tu - ESCP truoc, EUCP sau\n'
+    'e8_b': MO_VONG + '\n\t\t\t\t\t\t// E8-B: reversed order - ESCP first, then EUCP\n'
             + LOC_ESCP + LOC_EUCP,
     'e8_c': HOIST + MO_VONG
-            + '\n\t\t\t\t\t\t// E8-C: thu tu goc, tra cuu da nhac ra ngoai\n'
+            + '\n\t\t\t\t\t\t// E8-C: original order, lookups moved out of the loop\n'
             + LOC_EUCP_C + LOC_ESCP_C,
 }
 
@@ -130,14 +130,20 @@ KHAI_BAO_GOC = '\tpublic int candidateCount =0;'
 
 KHAI_BAO_MOI = """	public int candidateCount =0;
 
-	// === E8: bo dem rieng cho tung chien luoc tia ===
-	// Bat bien phai dung: pairsConsidered = rejEUCP + rejESCP + candidateCount
-	public long pairsConsidered = 0;   // so cap (X,Y) buoc vao vong lap trong
-	public long rejEUCP = 0;           // bi EUCP loai
-	public long rejESCP = 0;           // bi ESCP loai
-	public long constructNull = 0;     // qua ca hai bo loc nhung construct tra null
-	public long rejLAutil = 0;         // trong do: LA-prune cat theo huu ich
-	public long rejLAsup = 0;          // trong do: LA-prune cat theo support"""
+	// === E8: one counter per pruning strategy ===
+	// The invariant pairsConsidered = rejEUCP + rejESCP + candidateCount must hold.
+	/** E8: number of candidate pairs (X, Y) that enter the inner loop of phm */
+	public long pairsConsidered = 0;
+	/** E8: number of candidate pairs rejected by EUCP */
+	public long rejEUCP = 0;
+	/** E8: number of candidate pairs rejected by ESCP */
+	public long rejESCP = 0;
+	/** E8: number of pairs that pass both filters but for which construct returns no list */
+	public long constructNull = 0;
+	/** E8: of constructNull, the pairs cut by LA-prune on utility */
+	public long rejLAutil = 0;
+	/** E8: of constructNull, the pairs cut by LA-prune on support */
+	public long rejLAsup = 0;"""
 
 DEM_GOC = """						candidateCount++;
 						if (candidateCount%10000==0){
@@ -184,7 +190,7 @@ IN_GOC = ('\t\tSystem.out.println(" Candidate count : "'
           '             + candidateCount);')
 
 IN_MOI = """		System.out.println(" Candidate count : "             + candidateCount);
-		// === E8: bao cao cong viec cua tung chien luoc tia ===
+		// === E8: report the work done by each pruning strategy ===
 		System.out.println(" Pairs considered : "            + pairsConsidered);
 		System.out.println(" Rejected by EUCP : "            + rejEUCP);
 		System.out.println(" Rejected by ESCP : "            + rejESCP);

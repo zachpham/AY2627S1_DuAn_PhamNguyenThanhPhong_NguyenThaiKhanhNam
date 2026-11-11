@@ -1,0 +1,21 @@
+tap muc      : 4414 3404 4404 4430 7112 7092 4426 4434 180 170
+|D|          : 49046
+support      : 34708
+hui (UTIL)   : 5926270
+minPer       : 1
+maxPer       : 45
+avgPer       : 1.413063   (= |D|/(sup+1))
+tap muc      : 4414 17 3404 4404 4430 7112 7092 4426 4434 180 170
+|D|          : 49046
+support      : 32140
+hui (UTIL)   : 5842926
+minPer       : 1
+maxPer       : 59
+avgPer       : 1.525964   (= |D|/(sup+1))
+tap muc      : 46
+|D|          : 3196
+support      : 2556
+hui (UTIL)   : 84390
+minPer       : 1
+maxPer       : 25
+avgPer       : 1.249902   (= |D|/(sup+1))

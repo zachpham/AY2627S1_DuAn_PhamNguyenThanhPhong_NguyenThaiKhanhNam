@@ -35,7 +35,8 @@ HINH_F0 = {
     'accidents': {19: (27, 1350), 18: (45, 1415), 17: (62, 1635),
                   15: (165, 1820), 13: (310, 2150)},
     # minUtil (trieu) -> giay o Hinh 5(c)
-    'pumsb': {5.8: 77, 5.6: 159, 5.0: 778},
+    # 5.4 va 5.2 lay tu analysis/so_hoa_hinh5.py (doc theo pixel, 1 pixel = 3,1 s)
+    'pumsb': {5.8: 77, 5.6: 159, 5.4: 226, 5.2: 421, 5.0: 778},
 }
 
 # Ngoai suy hai muc khong chay, xem Bang 7.6 cua bao cao. Hai kich ban: ti le
@@ -68,7 +69,31 @@ def doc_so_do():
             'ung_vien': int(h['ung_vien']),
             'giay': float(h['thoi_gian_ms']) / 1000.0,
             'mb': float(h['bo_nho_mb']) if h['bo_nho_mb'] else None,
+            'ngay': h['ngay'],
         })
+    return ra
+
+
+GHI_CHU_ACCIDENTS_DT = 'thu tu muc accidents nam muc'               # cac dong cua chay_thu_tu.ps1 -accidents
+
+
+def doc_duong_truoc(bo, ghi_chu=None):
+    """Doc cac lan chay cua thu tu muc duong truoc (build/duong_truoc) tren mot bo du lieu.
+
+    Tra ve {minUtil: {'ung_vien', 'giay', 'mb'}}; neu co ghi_chu thi chi lay dong co dung ghi chu do.
+    """
+    duong = os.path.join(GOC, 'output', 'do_luong.csv')
+    ra = {}
+    for h in csv.DictReader(io.open(duong, encoding='utf-8', errors='replace')):
+        if h.get('ban') != 'duong_truoc' or h['dataset'] != bo:
+            continue
+        if ghi_chu is not None and h['ghi_chu'] != ghi_chu:
+            continue
+        ra[int(h['minUtil'])] = {                                       # dong sau thay dong truoc
+            'ung_vien': int(h['ung_vien']),
+            'giay': float(h['thoi_gian_ms']) / 1000.0,
+            'mb': float(h['bo_nho_mb']),
+        }
     return ra
 
 
@@ -186,23 +211,44 @@ def luu(fig, ten):
 
 # ---------------------------------------------------------------------------
 
+def chon_bang_7_3(so_do):
+    """Chon dung nam dong cua Bang 7.3: accidents, minAvg 5, cac lan chay ngay 18/10/2026.
+
+    Bang 7.3 giu cac lan chay 18/10 de nam muc duoc so trong cung dieu kien; hai muc 18 va 17
+    trieu duoc do lai ngay 09/11 va cung nam trong do_luong.csv, nen phai loc theo ngay, neu
+    khong hinh se co bay diem va lech khoi bang.
+    """
+    d = sorted((r for r in so_do if r['bo'] == 'accidents' and r['minAvg'] == 5
+                and r['ngay'] == '2026-10-18'), key=lambda r: r['minUtil'])
+    assert [r['minUtil'] for r in d] == [13000000, 15000000, 17000000, 18000000, 19000000],         'Bang 7.3 can dung nam muc accidents, tim thay %s' % [r['minUtil'] for r in d]
+    return d
+
+
 def hinh1_thoi_gian_accidents(so_do):
     """Thoi gian chay tren accidents_negative: do duoc so voi Hinh 5(a) cua F0."""
-    d = sorted((r for r in so_do if r['bo'] == 'accidents' and r['minAvg'] == 5),
-               key=lambda r: r['minUtil'])
+    d = chon_bang_7_3(so_do)
     x = [r['minUtil'] / 1e6 for r in d]
     y = [r['giay'] for r in d]
     y_f0 = [HINH_F0['accidents'][round(v)][0] for v in x]
 
     fig, ax = plt.subplots(figsize=(6.1, 3.2))
-    ax.plot(x, y, 'o-', color='#1f4e79', label='Corrected build (measured)')
+    ax.plot(x, y, 'o-', color='#1f4e79', label='Corrected build, item order of the code (18 Oct)')
     ax.plot(x, y_f0, 's--', color='#a0a0a0', label='Figure 5(a) of F0')
     # step: ghi ti le ngay tren tung diem, vi do chinh la lap luan cua muc 7.4
     for xi, yi, yf in zip(x, y, y_f0):
         ax.annotate('x%.2f' % (yi / yf), (xi, yi), textcoords='offset points',
                     xytext=(0, 7), ha='center', fontsize=7.5, color='#1f4e79')
+    # step: thu tu duong truoc, do 10/11 (muc 7.4 va 7.10); ti le ghi duoi diem
+    dt = doc_duong_truoc('accidents', GHI_CHU_ACCIDENTS_DT)
+    y_dt = [dt[int(round(v * 1e6))]['giay'] for v in x]
+    ax.plot(x, y_dt, '^-', color='#2e7d32', label='Corrected build, positive items first (10 Nov)')
+    for xi, yi, yf in zip(x, y_dt, y_f0):
+        ax.annotate('x%.2f' % (yi / yf), (xi, yi), textcoords='offset points',
+                    xytext=(0, -13), ha='center', fontsize=7.5, color='#2e7d32')
     ax.set_xlabel('minUtil (millions)')
     ax.set_ylabel('runtime (s)')
+    ax.set_ylim(bottom=-35)                                             # chua cho nhan duoi diem
+    ax.set_yticks([v for v in ax.get_yticks() if v >= 0])
     ax.invert_xaxis()
     ax.legend(frameon=False)
     return luu(fig, 'hinh1.png')
@@ -210,15 +256,17 @@ def hinh1_thoi_gian_accidents(so_do):
 
 def hinh2_bo_nho_accidents(so_do):
     """Bo nho dinh tren accidents_negative: do duoc so voi Hinh 6(a) cua F0."""
-    d = sorted((r for r in so_do if r['bo'] == 'accidents' and r['minAvg'] == 5),
-               key=lambda r: r['minUtil'])
+    d = chon_bang_7_3(so_do)
     x = [r['minUtil'] / 1e6 for r in d]
     y = [r['mb'] for r in d]
     y_f0 = [HINH_F0['accidents'][round(v)][1] for v in x]
 
     fig, ax = plt.subplots(figsize=(6.1, 3.2))
-    ax.plot(x, y, 'o-', color='#1f4e79', label='Corrected build (measured)')
+    ax.plot(x, y, 'o-', color='#1f4e79', label='Corrected build, item order of the code (18 Oct)')
     ax.plot(x, y_f0, 's--', color='#a0a0a0', label='Figure 6(a) of F0')
+    dt = doc_duong_truoc('accidents', GHI_CHU_ACCIDENTS_DT)
+    ax.plot(x, [dt[int(round(v * 1e6))]['mb'] for v in x], '^-', color='#2e7d32',
+            label='Corrected build, positive items first (10 Nov)')
     ax.set_xlabel('minUtil (millions)')
     ax.set_ylabel('peak memory (MB)')
     ax.set_ylim(0, 2400)
@@ -228,9 +276,12 @@ def hinh2_bo_nho_accidents(so_do):
 
 
 def hinh3_ung_vien_pumsb(so_do):
-    """So ung vien tren pumsb_negative: ba muc da xong va ngoai suy hai muc con."""
-    d = sorted((r for r in so_do if r['bo'] == 'pumsb'),
-               key=lambda r: -r['minUtil'])
+    """So ung vien tren pumsb_negative: thu tu cua ma (ba muc xong, ngoai suy hai muc con) va thu tu duong truoc."""
+    # step: moi muc chi lay lan chay som nhat; lan chay lai 10/11 (_r2) cho cung so ung vien
+    som_nhat = {}
+    for r in sorted((r for r in so_do if r['bo'] == 'pumsb'), key=lambda r: r['ngay']):
+        som_nhat.setdefault(r['minUtil'], r)
+    d = sorted(som_nhat.values(), key=lambda r: -r['minUtil'])
     x = [r['minUtil'] / 1e6 for r in d]
     y = [r['ung_vien'] for r in d]
 
@@ -254,10 +305,20 @@ def hinh3_ung_vien_pumsb(so_do):
                 xytext=(4, -13), fontsize=7.5, color='#808080')
 
     ax.plot(x, y, 'o-', color='#1f4e79', lw=1.6, markersize=6,
-            label='Corrected build (completed runs)')
+            label='Corrected build, item order of the code')
     for xi, yi in zip(x, y):
         ax.annotate('%.2f M' % (yi / 1e6), (xi, yi), textcoords='offset points',
                     xytext=(0, 9), ha='center', fontsize=7.5, color='#1f4e79')
+
+    # step: thu tu duong truoc (muc 7.10): ca nam muc deu chay xong
+    dt = doc_duong_truoc('pumsb')
+    x_dt = sorted((m / 1e6 for m in dt), reverse=True)
+    y_dt = [dt[int(round(v * 1e6))]['ung_vien'] for v in x_dt]
+    ax.plot(x_dt, y_dt, 's-', color='#2e7d32', lw=1.6, markersize=5,
+            label='Corrected build, positive items first')
+    for xi, yi in zip(x_dt, y_dt):
+        ax.annotate('%d k' % round(yi / 1e3), (xi, yi), textcoords='offset points',
+                    xytext=(0, 8), ha='center', fontsize=7.5, color='#2e7d32')
 
     ax.set_yscale('log')
     ax.set_xlabel('minUtil (millions)')
@@ -267,7 +328,7 @@ def hinh3_ung_vien_pumsb(so_do):
     ax.legend(frameon=False, loc='upper left', fontsize=8)
     # step: nhac lai ket qua chinh cua muc 7.1 - ban cong bo khong mo nhanh nao,
     #       khong ve len duoc vi 0 khong nam tren truc log
-    ax.text(0.98, 0.04, 'Published build: 0 candidates at every level',
+    ax.text(0.98, 0.45, 'Published build: 0 candidates at every level',
             transform=ax.transAxes, ha='right', fontsize=8, color='#808080')
     return luu(fig, 'hinh3.png')
 

@@ -41,6 +41,12 @@ import ca.pfv.spmf.tools.MemoryLogger;
  * This is an implementation of the "PHMN" and PHMN+ algorithms for Periodic High-Utility Itemsets Mining with negative utility
  * published in the EAAI journal
  *
+ * <p>This copy is the corrected build of this project. The code of the authors is the object of
+ * the study and is otherwise left as published. Every line that changes the behaviour carries a
+ * comment containing PATCHED. The documentation of the original fields, classes and methods was
+ * completed so that every element has a Javadoc comment; those additions do not change the
+ * behaviour. A diff against tools/spmf/source shows every change.</p>
+ *
  * @see UtilityListPHMN
  * @see ElementPHMN
  * @author Lai et al., modified from the code of PHM from SPMF.
@@ -53,14 +59,20 @@ public class AlgoPHMN {
 	/** the number of candidate high-utility itemsets */
 	public int candidateCount =0;
 
-	// === E8: bo dem rieng cho tung chien luoc tia ===
-	// Bat bien phai dung: pairsConsidered = rejEUCP + rejESCP + candidateCount
-	public long pairsConsidered = 0;   // so cap (X,Y) buoc vao vong lap trong
-	public long rejEUCP = 0;           // bi EUCP loai
-	public long rejESCP = 0;           // bi ESCP loai
-	public long constructNull = 0;     // qua ca hai bo loc nhung construct tra null
-	public long rejLAutil = 0;         // trong do: LA-prune cat theo huu ich
-	public long rejLAsup = 0;          // trong do: LA-prune cat theo support
+	// === E8: one counter per pruning strategy ===
+	// The invariant pairsConsidered = rejEUCP + rejESCP + candidateCount must hold.
+	/** E8: number of candidate pairs (X, Y) that enter the inner loop of phm */
+	public long pairsConsidered = 0;
+	/** E8: number of candidate pairs rejected by EUCP */
+	public long rejEUCP = 0;
+	/** E8: number of candidate pairs rejected by ESCP */
+	public long rejESCP = 0;
+	/** E8: number of pairs that pass both filters but for which construct returns no list */
+	public long constructNull = 0;
+	/** E8: of constructNull, the pairs cut by LA-prune on utility */
+	public long rejLAutil = 0;
+	/** E8: of constructNull, the pairs cut by LA-prune on support */
+	public long rejLAsup = 0;
 
 	/** Map to remember the TWU of each item */
 	Map<Integer, Long> mapItemToTWU;
@@ -103,6 +115,7 @@ public class AlgoPHMN {
 	/** buffer for storing the current itemset that is mined when performing mining
 	* the idea is to always reuse the same buffer to reduce memory usage. */
 	final int BUFFERS_SIZE = 200;
+	/** the reusable itemset buffer, of size BUFFERS_SIZE, allocated by runAlgorithm */
 	private int[] itemsetBuffer = null;
 
 	/** the database size (number of transactions */
@@ -137,26 +150,57 @@ public class AlgoPHMN {
 
 	/** mode to find irregular itemsets */
 	public boolean findingIrregularItemsets = false;
+	/** progress counter printed once every 10,000 candidates by phm */
 	private int xx = 1;
 
 
+	/** a transaction identifier and an item; declared by the authors but never instantiated */
 	class IMP{
+		/** the transaction identifier */
 		int tid;
+		/** the item */
 		int item;
+
+		/**
+		 * Creates an empty pair of a transaction identifier and an item.
+		 */
+		IMP()
+		{
+		}
 	}
 
 	/** this class represent an item and its utility in a transaction */
 	class Pair{
+		/** the item */
 		int item = 0;
+		/** the utility of the item in the transaction, negative for a negative item */
 		int utility = 0;
+
+		/**
+		 * Creates a pair with item 0 and utility 0, filled in while a transaction is read.
+		 */
+		Pair()
+		{
+		}
 	}
 
 	/** this class represent a single item and its support and periodicity */
 	class ItemInfo{
+		/** number of transactions that contain the item */
 		int support = 0;
+		/** largest gap between occurrences, counting the gaps before the first and after the last */
 		int largestPeriodicity = 0;
+		/** smallest gap between two consecutive occurrences */
 		int smallestPeriodicity = Integer.MAX_VALUE;
+		/** identifier of the last transaction that contained the item, 0 before the first */
 		int lastSeenTransaction = 0;
+
+		/**
+		 * Creates the record of an item not yet seen in any transaction.
+		 */
+		ItemInfo()
+		{
+		}
 	}
 
 	/**
@@ -168,6 +212,7 @@ public class AlgoPHMN {
 
 	/**
 	 * Run the algorithm
+	 * @param improve true runs PHMN+, which calls funcImprove after a rejected pair; false runs PHMN
 	 * @param input the input file path
 	 * @param output the output file path
 	 * @param minUtility the minimum utility threshold
@@ -573,10 +618,14 @@ public class AlgoPHMN {
 //	}
 
 	/**
-	 * Method to compare items by their TWU
+	 * Method to compare items by their TWU. The order is ascending TWU, then item number; it does
+	 * not consider the sign of the utility, unlike Definition 7 of the paper, which places the
+	 * negative items first. The same order is used for the utility-lists and for the transactions
+	 * from which the remaining utility is computed.
 	 * @param item1 an item
 	 * @param item2 another item
-	 * @return 0 if the same item, >0 if item1 is larger than item2,  <0 otherwise
+	 * @return 0 if the same item, a positive number if item1 comes after item2, a negative
+	 *         number otherwise
 	 */
 	private int compareItems(int item1, int item2) {
 //		int compare = (int)( mapItemToItemInfo.get(item1).support - mapItemToItemInfo.get(item2).support);
@@ -594,7 +643,7 @@ public class AlgoPHMN {
 	 * @param ULs The utility lists corresponding to each extension of the prefix.
 	 * @param minUtility The minUtility threshold.
 	 * @param prefixLength The current prefix length
-	 * @throws IOException
+	 * @throws IOException if an itemset cannot be written to the output file
 	 */
 	private void phm(int [] prefix,	int prefixLength, UtilityListPHMN pUL, List<UtilityListPHMN> ULs, int minUtility)
 			throws IOException {
@@ -609,7 +658,7 @@ public class AlgoPHMN {
 			// If the sum of the remaining utilities for pX
 			// is higher than minUtility, we explore extensions of pX.
 			// (this is the pruning condition)
-			// PATCHED (Definition 8): the subtree bound is PU + RU, not U + RU
+			// PATCHED: the subtree test is PU + RU, which is valid; Strategy 4 of F0 tests U + RU, which is not
 			if(X.sumPutils + X.sumRutils >= minUtility){
 
 				double averagePeriodicity = (double) databaseSize / ((double) X.getSupport()+1) ;
@@ -635,14 +684,14 @@ public class AlgoPHMN {
 					List<UtilityListPHMN> exULs = new ArrayList<UtilityListPHMN>();
 					// For each extension of p appearing
 					// after X according to the ascending order
-					// E8-C: hai tra cuu duoi day khong phu thuoc j, nhac ra ngoai vong lap
+					// E8-C: the two lookups below do not depend on j, so they are done once, before the loop
 					Map<Integer, Long> mapTWUF_X = ENABLE_EUCP ? mapEUCS.get(X.item) : null;
 					Map<Integer, Long> mapSUPF_X = ENABLE_ESCP ? mapESCS.get(X.item) : null;
 					for(int j=i+1; j < ULs.size(); j++){
 						UtilityListPHMN Y = ULs.get(j);
 						pairsConsidered++;
 
-						// E8-C: thu tu goc, tra cuu da nhac ra ngoai
+						// E8-C: original order, lookups moved out of the loop
 						if(mapTWUF_X != null){
 							Long twuF = mapTWUF_X.get(Y.item);
 							if(twuF == null || twuF < minUtility) {
@@ -689,6 +738,14 @@ public class AlgoPHMN {
 	}
 
 	/********************* improve ***********************/
+	/**
+	 * The optimisation that PHMN+ applies after the construction of an extension XY has returned
+	 * no list. It rebuilds the extension lists of X already constructed, with the utility of Y
+	 * removed from the remaining utility of every entry whose transaction contains Y.
+	 * @param exULs the extension lists of the current prefix built so far
+	 * @param item the item Y whose extension was rejected
+	 * @return new extension lists with the tightened remaining utilities
+	 */
 	private List<UtilityListPHMN> funcImprove(List<UtilityListPHMN> exULs, Integer item) {
 		List<UtilityListPHMN> ress = new ArrayList<>();
 		for (UtilityListPHMN utilityListPHM:exULs){
@@ -722,7 +779,8 @@ public class AlgoPHMN {
 	 * @param P :  the utility list of prefix P.
 	 * @param px : the utility list of pX
 	 * @param py : the utility list of pY
-	 * @return the utility list of pXY
+	 * @param minUtility the minimum utility threshold, used by LA-prune
+	 * @return the utility list of pXY, or null if LA-prune, the support threshold or maxPer rejects it
 	 */
 	private UtilityListPHMN construct(UtilityListPHMN P, UtilityListPHMN px, UtilityListPHMN py, int minUtility) {
 		// create an empy utility list for pXY
@@ -891,10 +949,11 @@ public class AlgoPHMN {
 
 	/**
 	 * Method to write a high utility itemset to the output file.
-	// * @param the prefix to be writent o the output file
+	 * @param prefix the buffer holding the items of the prefix
 	 * @param prefixLength the prefix length
 	 * @param utilityList the utility list
 	 * @param averagePeriodicity the average periodicity
+	 * @throws IOException if the output file cannot be written
 	 */
 	private void writeOut(int[] prefix, int prefixLength, UtilityListPHMN utilityList, double averagePeriodicity) throws IOException {
 		phuiCount++; // increase the number of high utility itemsets found
@@ -971,7 +1030,7 @@ public class AlgoPHMN {
 
 	/**
 	 * Print statistics about the latest execution to System.out.
-	 * @throws IOException
+	 * @throws IOException if the size of the itemset buffer cannot be measured
 	 */
 	public void printStats() throws IOException {
 		// print the eucs
@@ -1017,7 +1076,7 @@ public class AlgoPHMN {
 		System.out.println(" Memory ~ "                      + maximumMemoryUsage + " MB");
 		System.out.println(" " + patternType + " High-utility itemsets count : " + phuiCount);
 		System.out.println(" Candidate count : "             + candidateCount);
-		// === E8: bao cao cong viec cua tung chien luoc tia ===
+		// === E8: report the work done by each pruning strategy ===
 		System.out.println(" Pairs considered : "            + pairsConsidered);
 		System.out.println(" Rejected by EUCP : "            + rejEUCP);
 		System.out.println(" Rejected by ESCP : "            + rejESCP);
@@ -1064,7 +1123,7 @@ public class AlgoPHMN {
 	 * Get the size of a Java object (for debugging purposes)
 	 * @param object the object
 	 * @return the size in MB
-	 * @throws IOException
+	 * @throws IOException if the object cannot be serialized
 	 */
     private double getObjectSize(
             Object object)

@@ -40,16 +40,22 @@ BEGIN {
     for (j = 1; j <= k; j++) s += val[S[j]];
     util += s;
 
-    # step: periods are gaps between consecutive transactions holding the itemset
+    # step: periods are gaps between consecutive transactions holding the itemset.
+    # As in SPMF, maxPer also counts the gap from the start of the database to the first
+    # occurrence (here) and from the last occurrence to the end (in END), while minPer
+    # uses the gaps between occurrences only.
     if (truoc > 0) {
         gap = tong_gd - truoc;
         if (minper == 0 || gap < minper) minper = gap;
         if (gap > maxper) maxper = gap;
+    } else {
+        maxper = tong_gd;
     }
     truoc = tong_gd;
 }
 END {
     if (sup == 0) { print "tap muc nay khong xuat hien trong giao dich nao"; exit }
+    if (tong_gd - truoc > maxper) maxper = tong_gd - truoc;
     printf "tap muc      : %s\n", want;
     printf "|D|          : %d\n", tong_gd;
     printf "support      : %d\n", sup;

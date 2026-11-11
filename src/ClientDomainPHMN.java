@@ -36,6 +36,13 @@ public class ClientDomainPHMN
     private static final int EXPECTED_ARGUMENT_COUNT = 7;
 
     /**
+     * Not used: the client is run through {@link #main(String[])} and holds no state.
+     */
+    private ClientDomainPHMN()
+    {
+    }
+
+    /**
      * Entry point. Runs PHMN once on the given data and prints one line of measurements.
      *
      * @param args input file, output file, then minUtil, minPer, maxPer, minAvg, maxAvg

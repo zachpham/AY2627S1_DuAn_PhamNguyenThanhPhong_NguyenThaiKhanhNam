@@ -1,0 +1,22 @@
+database                          : data/accidents_negative.txt
+root items                        : 47
+pairs at level 2                  : 1081
+elements, all pairs (breadth-first): 108150306  ~3713 MB
+elements, one root item at a time  : 3608825  ~124 MB  (largest, item 14)
+ratio                              : 30.0
+
+real	1m9.545s
+user	0m0.015s
+sys	0m0.015s
+
+database                          : data/pumsb_negative.txt
+root items                        : 114
+pairs at level 2                  : 6441
+elements, all pairs (breadth-first): 91347392  ~3136 MB
+elements, one root item at a time  : 1092421  ~38 MB  (largest, item 4496)
+ratio                              : 83.6
+
+real	0m4.484s
+user	0m0.015s
+sys	0m0.016s
+

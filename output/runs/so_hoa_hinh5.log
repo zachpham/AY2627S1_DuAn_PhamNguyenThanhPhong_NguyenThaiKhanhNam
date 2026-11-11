@@ -1,0 +1,18 @@
+panel a_accidents
+  minUtil  13,000,000    310.2 s  (one pixel = 1.2 s)
+  minUtil  15,000,000    164.2 s  (one pixel = 1.2 s)
+  minUtil  17,000,000     61.7 s  (one pixel = 1.2 s)
+  minUtil  18,000,000     45.3 s  (one pixel = 1.2 s)
+  minUtil  19,000,000     27.6 s  (one pixel = 1.2 s)
+panel c_pumsb
+  minUtil   5,000,000    778.8 s  (one pixel = 3.1 s)
+  minUtil   5,200,000    421.0 s  (one pixel = 3.1 s)
+  minUtil   5,400,000    225.8 s  (one pixel = 3.1 s)
+  minUtil   5,600,000    157.7 s  (one pixel = 3.1 s)
+  minUtil   5,800,000     77.2 s  (one pixel = 3.1 s)
+panel d_connect_check
+  minUtil  16,000,000    234.3 s  (one pixel = 0.8 s)
+  minUtil  16,250,000    151.9 s  (one pixel = 0.8 s)
+  minUtil  16,500,000    108.5 s  (one pixel = 0.8 s)
+  minUtil  16,750,000     78.0 s  (one pixel = 0.8 s)
+  minUtil  17,000,000     59.7 s  (one pixel = 0.8 s)

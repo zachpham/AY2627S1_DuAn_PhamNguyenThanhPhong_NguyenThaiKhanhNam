@@ -23,6 +23,10 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from spmf_phmn_stress_test import brute_force, read_output, write_database
 
+PATCHED_DIR = os.path.join("build", "patched")   # ban da va, phai dung truoc jar
+
+# Chay "py -I <script> --stock" de do ban cong bo thay vi ban da va.
+DUNG_BAN_CONG_BO = "--stock" in sys.argv
 JAR_PATH = os.path.join("tools", "spmf", "spmf.jar")
 BUILD_DIR = "build"
 SOURCE_PATH = os.path.join("src", "ClientDomainPHMN.java")
@@ -75,7 +79,13 @@ def compile_client():
 
 def run_client(db_file, out_file, params):
     """Chay mot lan PHMN, tra ve cap (so ung vien, dict ket qua)."""
-    classpath = JAR_PATH + os.pathsep + BUILD_DIR
+    # Step 1: mac dinh PATCHED_DIR dung truoc JAR_PATH, nen JVM nap AlgoPHMN da va.
+    #         Voi --stock thi bo PATCHED_DIR di, JVM nap ban cong bo trong spmf.jar,
+    #         de lay so doi chung.
+    if DUNG_BAN_CONG_BO:
+        classpath = os.pathsep.join([JAR_PATH, BUILD_DIR])
+    else:
+        classpath = os.pathsep.join([PATCHED_DIR, JAR_PATH, BUILD_DIR])
     command = (["java", "-cp", classpath, "ClientDomainPHMN", db_file, out_file]
                + [str(p) for p in params])
     finished = subprocess.run(command, capture_output=True, text=True, check=True)

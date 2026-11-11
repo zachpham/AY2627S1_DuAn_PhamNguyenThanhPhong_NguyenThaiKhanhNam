@@ -1,0 +1,27 @@
+Ban duoc kiem : DA SUA
+seed  2  minUtil=7    bo sot 2 / 4 tap muc  vi du: [(2, 4), (2, 3, 4)]
+seed  7  minUtil=11   bo sot 1 / 23 tap muc  vi du: [(1, 5, 6)]
+seed 10  minUtil=6    bo sot 1 / 9 tap muc  vi du: [(1, 2, 3, 4)]
+seed 22  minUtil=14   bo sot 1 / 9 tap muc  vi du: [(2, 3, 4)]
+seed 23  minUtil=35   bo sot 1 / 26 tap muc  vi du: [(2, 4, 5)]
+seed 25  minUtil=306  bo sot 1 / 16 tap muc  vi du: [(1, 4, 5, 7)]
+seed 27  minUtil=41   bo sot 1 / 5 tap muc  vi du: [(1, 4)]
+seed 28  minUtil=11   bo sot 1 / 11 tap muc  vi du: [(1, 2, 4)]
+seed 32  minUtil=14   bo sot 1 / 8 tap muc  vi du: [(1, 2, 3, 4)]
+seed 34  minUtil=82   bo sot 1 / 15 tap muc  vi du: [(3, 5, 6)]
+seed 38  minUtil=13   bo sot 1 / 46 tap muc  vi du: [(2, 5, 6)]
+seed 42  minUtil=5    bo sot 4 / 6 tap muc  vi du: [(2, 3), (1, 2, 4), (2, 3, 4)]
+seed 43  minUtil=53   bo sot 2 / 7 tap muc  vi du: [(2, 3, 4), (1, 2, 3, 4)]
+seed 51  minUtil=35   bo sot 1 / 19 tap muc  vi du: [(1, 3, 4, 5)]
+seed 55  minUtil=2    bo sot 1 / 2 tap muc  vi du: [(3, 4)]
+seed 60  minUtil=5    bo sot 2 / 26 tap muc  vi du: [(3, 6), (5, 6)]
+
+--- Tong ket ---
+So co so du lieu           : 60
+  trong do co muc am       : 56
+So bo bi bo sot ket qua    : 16
+Tong so tap muc dung       : 1224
+So tap muc bi bo sot       : 22
+So ket qua thua (sai)      : 0
+So tap muc sai gia tri     : 0   (huu ich, support, minPer, maxPer)
+So lan PHMN khac PHMN+     : 0

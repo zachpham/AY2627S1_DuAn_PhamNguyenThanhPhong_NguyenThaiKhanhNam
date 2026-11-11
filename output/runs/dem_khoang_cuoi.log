@@ -1,0 +1,8 @@
+output file                      patterns in last transaction
+chess_f_80000                       70923               1323
+chess_f_150000                         13                  0
+pumsb_f_5800000                         2                  0
+pumsb_f_5600000                        11                  0
+pumsb_f_5400000                        33                  2
+accidents_f_19000000_minavg1           35                 35
+e8_a_mushroom_100000_ma100_r1       26324                191

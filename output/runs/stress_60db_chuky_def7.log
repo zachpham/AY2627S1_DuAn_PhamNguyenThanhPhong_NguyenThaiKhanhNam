@@ -1,0 +1,16 @@
+Ban duoc kiem : DA SUA
+Nguong chu ky : CHAT, ba bo moi co so du lieu
+
+--- Tong ket ---
+So co so du lieu           : 60
+  trong do co muc am       : 56
+So bo bi bo sot ket qua    : 0
+Tong so tap muc dung       : 1106
+So tap muc bi bo sot       : 0
+So ket qua thua (sai)      : 0
+So tap muc sai gia tri     : 0   (huu ich, support, minPer, maxPer)
+So lan PHMN khac PHMN+     : 0
+So lan chay                : 180
+  nguong chu ky loai >= 1  : 164 lan, tong 3627 tap muc dat nguong huu ich
+  so voi chi loc huu ich   : 166 lan, tong 3633 tap muc
+  rieng maxPer/maxAvg loai : 131 lan, tong 2846 tap muc (hai nguong duy nhat co tia)

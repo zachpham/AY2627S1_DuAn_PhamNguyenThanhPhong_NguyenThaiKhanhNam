@@ -1,0 +1,23 @@
+seed  6 : cau hinh lech E0 -> E1, E4
+seed  7 : cau hinh lech E0 -> E1, E4
+seed  8 : cau hinh lech E0 -> E1, E4
+seed  9 : cau hinh lech E0 -> E1, E4
+seed 22 : cau hinh lech E0 -> E1, E4
+seed 25 : cau hinh lech E0 -> E3, E4
+seed 26 : cau hinh lech E0 -> E4
+seed 32 : cau hinh lech E0 -> E4
+seed 34 : cau hinh lech E0 -> E1, E4
+seed 38 : cau hinh lech E0 -> E4
+seed 57 : cau hinh lech E0 -> E1, E4
+seed 58 : cau hinh lech E0 -> E1, E4
+seed 60 : cau hinh lech E0 -> E1, E4
+
+--- Tong ket tren 60 co so du lieu ---
+| Ma  | Tong so ung vien | So voi E0 | So bo lech ket qua E0 |
+|-----|------------------|-----------|-----------------------|
+| E0  |             1257 |     +0.0% |                     0 |
+| E1  |             1316 |     +4.7% |                     9 |
+| E2  |             1257 |     +0.0% |                     0 |
+| E3  |             1265 |     +0.6% |                     1 |
+| E4  |             1348 |     +7.2% |                    13 |
+| E5  |             1256 |     -0.1% |                     0 |
