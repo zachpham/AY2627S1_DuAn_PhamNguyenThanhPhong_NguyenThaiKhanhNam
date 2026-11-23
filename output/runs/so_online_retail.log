@@ -1,0 +1,43 @@
+|D| = 17780, items = 5584 (negative 1920)
+maxPer maxAvg  minUtil | patterns o/f/d7/dt | same set as patched | candidates o/f/d7/dt | CPU s o/f/d7/dt | check (wrong, missing<=2, spurious<=2)
+   700    350  5000000 | 10/10/10/10 | yes/yes/yes/yes | 2097/2097/2097/2097 | 2.1/1.9/1.9/1.8 | 0,0,0 0,0,0 0,0,0 0,0,0
+   700    350  2000000 | 76/76/76/76 | yes/yes/yes/yes | 4298/4298/4298/4298 | 1.8/1.8/1.7/1.7 | 0,0,0 0,0,0 0,0,0 0,0,0
+   700    350  1000000 | 321/321/321/321 | yes/yes/yes/yes | 4508/4508/4508/4508 | 1.8/2/1.9/1.8 | 0,0,0 0,0,0 0,0,0 0,0,0
+   700    350   500000 | 637/637/637/637 | yes/yes/yes/yes | 4533/4533/4533/4533 | 1.8/1.8/1.9/1.7 | 0,0,0 0,0,0 0,0,0 0,0,0
+   700    350   200000 | 840/840/840/840 | yes/yes/yes/yes | 4533/4533/4533/4533 | 1.9/1.8/1.6/1.8 | 0,0,0 0,0,0 0,0,0 0,0,0
+   700    350   100000 | 900/900/900/900 | yes/yes/yes/yes | 4533/4533/4533/4533 | 1.9/1.7/1.9/1.7 | 0,0,0 0,0,0 0,0,0 0,0,0
+  3000   3000  5000000 | 12/12/12/12 | yes/yes/yes/yes | 14106/14203/14203/14203 | 3.8/3.8/3.6/5.3 | 0,0,0 0,0,0 0,0,0 0,0,0
+  3000   3000  2000000 | 179/179/179/179 | yes/yes/yes/yes | 187809/188271/188271/188271 | 4.9/5/4.3/4 | 0,0,0 0,0,0 0,0,0 0,0,0
+  3000   3000  1000000 | 1540/1540/1540/1540 | yes/yes/yes/yes | 642883/643910/643910/643909 | 6/6.5/5.1/5.2 | 0,0,0 0,0,0 0,0,0 0,0,0
+ 17780  17780 10000000 | 2/3/3/3 | NO/yes/yes/yes | 5759/5800/5800/5800 | 4/4.2/3.2/4.2 | 0,1,0 0,0,0 0,0,0 0,0,0
+ 17780  17780  9000000 | 2/3/3/3 | NO/yes/yes/yes | 8448/8486/8486/8486 | 4.3/4/4.3/4.1 | 0,1,0 0,0,0 0,0,0 0,0,0
+ 17780  17780  8000000 | 4/5/5/5 | NO/yes/yes/yes | 12606/12666/12666/12666 | 4.5/5.1/5.1/4.5 | 0,1,0 0,0,0 0,0,0 0,0,0
+ 17780  17780  7000000 | 5/638/638/638 | NO/yes/yes/yes | 19859/159895/159895/97927 | 6/4.7/5.6/4.9 | 0,1,0 0,0,0 0,0,0 0,0,0
+
+maxPer   700, maxAvg   350:  424 items pass both periodicity filters,    2 of them negative
+maxPer  3000, maxAvg  3000: 1535 items pass both periodicity filters,   48 of them negative
+maxPer 17780, maxAvg 17780: 5584 items pass both periodicity filters, 1920 of them negative
+
+published build misses 633 patterns at maxPer 17780, minUtil 7000000, by length {1: 1, 35: 11, 36: 78, 37: 191, 38: 216, 39: 113, 40: 22, 41: 1}
+   e.g. ['23843 PAPER CRAFT , LITTLE BIRDIE']
+   e.g. ['85123A WHITE HANGING HEART T-LIGHT HOLDER', '22114 HOT WATER BOTTLE TEA AND SYMPATHY', '21733 RED HANGING HEART T-LIGHT HOLDER']
+published build misses 1 patterns at maxPer 17780, minUtil 8000000, by length {1: 1}
+   e.g. ['23843 PAPER CRAFT , LITTLE BIRDIE']
+published build misses 1 patterns at maxPer 17780, minUtil 9000000, by length {1: 1}
+   e.g. ['23843 PAPER CRAFT , LITTLE BIRDIE']
+published build misses 1 patterns at maxPer 17780, minUtil 10000000, by length {1: 1}
+   e.g. ['23843 PAPER CRAFT , LITTLE BIRDIE']
+
+weekly setting, minUtil 5,000,000 pence: the patterns, highest utility first
+  REGENCY CAKESTAND 3 TIER                                               GBP  142592.95  sup 1665  maxPer 126  avgPer  10.7
+  WHITE HANGING HEART T-LIGHT HOLDER                                     GBP  100603.50  sup 1934  maxPer 136  avgPer   9.2
+  JUMBO BAG RED RETROSPOT                                                GBP   85220.78  sup 1570  maxPer 119  avgPer  11.3
+  POSTAGE                                                                GBP   77803.96  sup 1053  maxPer 130  avgPer  16.9
+  PARTY BUNTING                                                          GBP   68844.33  sup 1361  maxPer 169  avgPer  13.1
+  JUMBO BAG PINK POLKADOT + JUMBO BAG RED RETROSPOT                      GBP   61506.66  sup  549  maxPer 279  avgPer  32.3
+  ASSORTED COLOUR BIRD ORNAMENT                                          GBP   56580.34  sup 1362  maxPer  95  avgPer  13.0
+  ROSES REGENCY TEACUP AND SAUCER  + REGENCY CAKESTAND 3 TIER            GBP   55261.03  sup  422  maxPer 249  avgPer  42.0
+  Manual                                                                 GBP   53779.93  sup  236  maxPer 481  avgPer  75.0
+  ROSES REGENCY TEACUP AND SAUCER  + GREEN REGENCY TEACUP AND SAUCER + R GBP   50448.11  sup  316  maxPer 391  avgPer  56.1
+
+checks failed: 0

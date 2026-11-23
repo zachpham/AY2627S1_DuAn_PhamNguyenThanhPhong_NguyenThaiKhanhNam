@@ -40,6 +40,7 @@ number produced by the code in this repository.
 | Experiment drivers | `tools/*.ps1` | us |
 | Analysis and plotting | `analysis/*.py`, `analysis/*.sh` | us |
 | Variant generators, output manifest | `tools/sinh_e8.py`, `tools/sinh_strategy4.py`, `tools/sinh_thu_tu.py`, `tools/manifest_output.py` | us |
+| Real retail N-database and its converter | `data/online_retail_negative.txt`, `data/online_retail_items.csv`, `tools/sinh_online_retail.py` | us, from `data/uci_online_retail.zip` (UCI, CC BY 4.0) |
 | The report | `523H0159_523H0169_week11.docx` | us |
 | Unmodified third-party code | `tools/spmf/` | SPMF project (GPL v3) |
 
@@ -231,6 +232,7 @@ without re-running anything. Those CSV files are the single source of every figu
 | E8 | Does the order of the EUCP and ESCP filters matter? | `powershell -NoProfile -ExecutionPolicy Bypass -File tools/chay_e8.ps1` (it compiles and calls the client `ClientOrderPHMN` once per run; compile the three variants first, see the supporting commands below) | `output/e8_do_luong.csv` |
 | Real data | Behaviour at the exact parameters of the paper | one configuration: `powershell -NoProfile -ExecutionPolicy Bypass -File tools/chay_do_luong.ps1 -bo pumsb -ban cong_bo -minutil 5800000 -chu_ky "1,3000,1,2000"` (`-ban da_sua` for the patched build); all pumsb levels of the patched build: `tools/chay_pumsb.ps1`; with the positive-first item order, minutes instead of days: `tools/chay_pumsb.ps1 -ban duong_truoc` (build it first, see the supporting commands) | `output/do_luong.csv` |
 | Order | What does the order of the items cost? The patched build under three orders: ascending TWU as in the code, negative items first as Definition 7 of the paper, positive items first as FHN. All three return the same patterns (Section 7.10 of the report). Compile the two variants first, see the supporting commands below; then compare with `py -I analysis/so_thu_tu.py > output/runs/so_thu_tu.log`, which exits with status 1 if an order changes the pattern set. `-accidents` runs the five accidents_negative levels of Figure 5(a) instead, positive-first and code order, both afresh in one session (about 25 minutes). `-pumsb` runs pumsb_negative at 5,800,000 instead, cheapest order first, several hours per order; `-han_chot "yyyy-MM-dd HH:mm"` stops the order of Definition 7 at that time and its log records the CPU time used, which `so_thu_tu.py` prints as a lower bound. The script asks Windows to keep the machine and the display awake while it runs; closing the lid still suspends it. | `powershell -NoProfile -ExecutionPolicy Bypass -File tools/chay_thu_tu.ps1` | `output/do_luong.csv` (rows with `ghi_chu` = `thi nghiem thu tu muc`), `output/runs/so_thu_tu.log` |
+| Retail | Do the defect, the cost of correctness and the item order matter on real negative utilities? `online_retail_negative` under three periodicity settings (weekly `1,700,1,350`, loose `1,3000,1,3000`, none `1,17780,1,17780`), 13 `minUtil` levels, four builds: 52 runs of a few CPU seconds each, about 4 minutes in all (Section 7.12 of the report). Build the database and the item-order variants first. The summary script checks every output without SPMF - every reported value recomputed from the data, every 1- and 2-itemset enumerated - and exits with status 1 if the patched build or a variant fails. | `py -I tools/sinh_online_retail.py > output/runs/sinh_online_retail.log`, then `powershell -NoProfile -ExecutionPolicy Bypass -File tools/chay_online_retail.ps1`, then `py -I analysis/so_online_retail.py > output/runs/so_online_retail.log` | `output/do_luong.csv` (rows with `ghi_chu` = `online retail`), `output/runs/so_online_retail.log` |
 | C11 | Which data characteristics and which parameter region suit the algorithm? On the patched build; add `--stock` for the published build | `py -I analysis/domain_sweep.py` | `output/runs/domain_c11_patched.log`, `output/runs/domain_c11_stock.log` |
 
 Supporting commands:
@@ -309,7 +311,7 @@ the two runs of the published build the report uses the later rows. For the two 
 patched build on `accidents_negative` at 18,000,000 and 17,000,000 it keeps the early rows, so
 that the five levels of its Table 7.3 are compared under the conditions of one session; the later
 rows reproduce their pattern and candidate counts exactly, with runtimes 1.30 and 1.51 times
-higher. Section 7.13 of the report explains why runtimes of different days differ by that much.
+higher. Section 7.14 of the report explains why runtimes of different days differ by that much.
 
 `output/e8_do_luong.csv` does the same for the 96 runs of experiment E8, and adds the pruning
 counters. Three of its columns exist purely to be checked. `bat_bien` records whether the program's
@@ -391,17 +393,32 @@ Negative values in the third field are the negative utilities the paper is about
 | `mushroom_negative.txt` | 8,124 | yes |
 | `pumsb_negative.txt` | 49,046 | yes — 27 MB |
 | `accidents_negative.txt` | 340,183 | yes — 71 MB |
+| `online_retail_negative.txt` | 17,780 | yes — built by us, see below |
+| `online_retail_items.csv` | 5,584 items | yes — item number, stock code, product name |
+| `uci_online_retail.zip` | 541,909 invoice lines | yes — the source, unchanged, 23 MB |
 
-The last two are the databases the paper itself uses. They are large but still below GitHub's
+`accidents_negative.txt` and `pumsb_negative.txt` are the databases the paper itself uses. They are large but still below GitHub's
 100 MB per-file limit, so the repository needs no Git LFS and a plain clone brings everything.
+The utilities of the four SPMF benchmark files are synthetic, as the SPMF dataset page states, and
+their line order is not a time order.
 
-### Pattern files, and why there are 24 of them rather than 172
+`online_retail_negative.txt` is a real N-database built for this project from the Online Retail
+dataset: Chen, D. (2015). Online Retail [Dataset]. UCI Machine Learning Repository.
+https://doi.org/10.24432/C5BW33, licence CC BY 4.0. `tools/sinh_online_retail.py` converts the
+archive with the Python standard library only. A transaction is one customer in one ISO week, in
+calendar order; the utility is quantity x unit price in pence (revenue: the source has no cost
+price); a negative line (return, discount, fee) on product p becomes the separate item `NEG:p`, so
+no item carries both signs; lines without a CustomerID are dropped. The reasons are in the
+docstring of the script and in Section 6.4 of the report, and every count is in
+`output/runs/sinh_online_retail.log`.
 
-The experiments wrote 172 pattern files totalling 181 MB, but only **24 distinct contents**. The
+### Pattern files, and why there are 39 of them rather than 224
+
+The experiments wrote 224 pattern files totalling 183 MB, but only **39 distinct contents**. The
 repeated runs of E8 produce byte-identical output — which is exactly the invariant E8 set out to
 test — and the runs of the published build produce empty files, which is the evidence that it finds
-nothing. The repository therefore holds one representative of each distinct content, 16.9 MB, plus
-`output/MANIFEST_output.csv`, which lists all 172 original names with their size, MD5 and the
+nothing. The repository therefore holds one representative of each distinct content, 17.4 MB, plus
+`output/MANIFEST_output.csv`, which lists all 224 original names with their size, MD5 and the
 representative that carries their bytes; the representative is a run of the patched build (`_f_`)
 whenever its group has one. Nothing is lost: the manifest proves which file equals which.
 Rebuild it, and the matching exception list in `.gitignore`, with:
@@ -432,3 +449,7 @@ distribute.
 the GNU General Public License v3. `src/patched/`, `src/e8_*/`, `src/strategy4/`, `src/def7/` and `src/duong_truoc/` are derived from it and are
 therefore covered by the same licence. The client classes, the drivers and the analysis scripts are
 coursework.
+
+`data/uci_online_retail.zip` is redistributed unchanged under CC BY 4.0, with the attribution given
+in section 7; `data/online_retail_negative.txt` and `data/online_retail_items.csv` are adaptations of it
+under the same licence.

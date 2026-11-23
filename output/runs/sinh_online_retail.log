@@ -1,0 +1,17 @@
+source             : data/uci_online_retail.zip
+invoice lines      : 541909
+invoices           : 25900 (cancellation invoices: 3836)
+lines w/o customer : 135080
+negative lines in ordinary invoices: 2
+lines kept         : 406785
+transactions |D|   : 17780
+items |I|          : 5584 (negative: 1920)
+avg. length        : 22.0
+mixed transactions : 1509 (8.5 %)
+only negative      : 1856
+ISO weeks          : 53 ((2010, 48) to (2011, 49))
+transactions/week  : 335
+positive utility   : 891140790
+negative utility   : 61134209 (6.86 % of the positive)
+items with 2 signs : 0
+wrote data/online_retail_negative.txt and data/online_retail_items.csv

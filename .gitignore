@@ -10,11 +10,11 @@
 1-s2.0-S0952197623003664-main.pdf
 Mining periodic high-utility itemsets with both positive and negative utilities.pdf
 
-# --- Experiment results. The 172 pattern files total 181 MB but hold only 24 distinct
+# --- Experiment results. The 224 pattern files total 183 MB but hold only 39 distinct
 #     contents: the repeated E8 runs write byte-identical output, which is precisely what E8
 #     measured, and the published build writes empty files. One representative of each distinct
 #     content is committed below, a run of the patched build ("_f_") whenever the group has one;
-#     output/MANIFEST_output.csv names all 172 originals with their size, MD5 and
+#     output/MANIFEST_output.csv names all 224 originals with their size, MD5 and
 #     representative, so nothing is lost. Regenerate both the manifest and this list with
 #     `py -I tools/manifest_output.py`. ---
 output/*.txt
@@ -33,6 +33,21 @@ output/*.txt
 !output/mushroom_d7_100000_p1-3000-1-2000.txt
 !output/mushroom_dt_100000_p1-3000-1-2000.txt
 !output/mushroom_f_100000_p1-3000-1-2000.txt
+!output/online_retail_f_100000.txt
+!output/online_retail_f_1000000.txt
+!output/online_retail_f_10000000_p1-17780-1-17780.txt
+!output/online_retail_f_1000000_p1-3000-1-3000.txt
+!output/online_retail_f_200000.txt
+!output/online_retail_f_2000000.txt
+!output/online_retail_f_2000000_p1-3000-1-3000.txt
+!output/online_retail_f_500000.txt
+!output/online_retail_f_5000000.txt
+!output/online_retail_f_5000000_p1-3000-1-3000.txt
+!output/online_retail_f_7000000_p1-17780-1-17780.txt
+!output/online_retail_f_8000000_p1-17780-1-17780.txt
+!output/online_retail_o_10000000_p1-17780-1-17780.txt
+!output/online_retail_o_7000000_p1-17780-1-17780.txt
+!output/online_retail_o_8000000_p1-17780-1-17780.txt
 !output/pumsb_dt_5000000.txt
 !output/pumsb_dt_5200000.txt
 !output/pumsb_dt_5400000.txt

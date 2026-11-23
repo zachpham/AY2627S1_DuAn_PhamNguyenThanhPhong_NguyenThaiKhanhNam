@@ -110,6 +110,7 @@ $reference = @{
     'kosarak'   = '1,5000,5,5000'                                  # Table 8 of F0
     'connect'   = '1,3000,1,2000'                                  # Table 8 of F0
     'chess'     = '1,3196,1,3196'                                  # loose setting of the report
+    'online_retail' = '1,700,1,350'                                # weekly regularity, Section 7.12
 }
 $stem = "$($bo)_$($tag)_$minutil"
 if ($reference[$bo] -ne ($thresholds -join ','))
